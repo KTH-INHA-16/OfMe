@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -47,7 +46,7 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.98054224249999999" green="0.97999888660000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="f0D-eq-qrN" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="2lR-Xa-Tr1"/>
                             <constraint firstItem="f0D-eq-qrN" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Fos-dB-IWh"/>
@@ -63,8 +62,5 @@
     </scenes>
     <resources>
         <image name="loginLogo" width="135" height="56"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

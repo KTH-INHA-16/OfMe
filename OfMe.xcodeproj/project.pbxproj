@@ -7,12 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B2BAF28268B4FCE00CF3048 /* MyInfoMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2BAF26268B4FCE00CF3048 /* MyInfoMainViewController.swift */; };
+		3B2BAF29268B4FCE00CF3048 /* MyInfoMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B2BAF27268B4FCE00CF3048 /* MyInfoMainViewController.xib */; };
+		3B2BAF2C268B5E9200CF3048 /* CustomTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2BAF2A268B5E9200CF3048 /* CustomTabBarViewController.swift */; };
+		3B2BAF2D268B5E9200CF3048 /* CustomTabBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B2BAF2B268B5E9200CF3048 /* CustomTabBarViewController.xib */; };
+		3B2BAF36268CA4E000CF3048 /* PreviewAdpater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2BAF35268CA4E000CF3048 /* PreviewAdpater.swift */; };
+		3B2BAF39268CC44500CF3048 /* UITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2BAF38268CC44500CF3048 /* UITabBarController.swift */; };
+		3B2BAF3E268CC5D000CF3048 /* TestMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2BAF3C268CC5D000CF3048 /* TestMainViewController.swift */; };
+		3B2BAF3F268CC5D000CF3048 /* TestMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B2BAF3D268CC5D000CF3048 /* TestMainViewController.xib */; };
 		3B4037272689D6FC00AFAC40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4037262689D6FC00AFAC40 /* AppDelegate.swift */; };
 		3B4037292689D6FC00AFAC40 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4037282689D6FC00AFAC40 /* SceneDelegate.swift */; };
 		3B4037302689D6FE00AFAC40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B40372F2689D6FE00AFAC40 /* Assets.xcassets */; };
 		3B4037332689D6FE00AFAC40 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B4037312689D6FE00AFAC40 /* LaunchScreen.storyboard */; };
 		3B638FB7268A44430095F05B /* SignInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B638FB6268A44430095F05B /* SignInfo.swift */; };
-		3B638FBD268B0F3C0095F05B /* CustomTabBarCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B638FBC268B0F3C0095F05B /* CustomTabBarCtrl.swift */; };
 		3B638FBF268B0FC40095F05B /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B638FBE268B0FC40095F05B /* CustomTabBar.swift */; };
 		3B638FC9268B485B0095F05B /* HomeMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B638FC7268B485B0095F05B /* HomeMainViewController.swift */; };
 		3B638FCA268B485B0095F05B /* HomeMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B638FC8268B485B0095F05B /* HomeMainViewController.xib */; };
@@ -37,7 +44,6 @@
 		3B8391E92689D98000B35A53 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8391C62689D97F00B35A53 /* Color.swift */; };
 		3B8391EB2689D98000B35A53 /* KobisKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8391C92689D97F00B35A53 /* KobisKey.swift */; };
 		3B8391F82689D98000B35A53 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8391D92689D98000B35A53 /* BaseViewController.swift */; };
-		3B8391F92689D98000B35A53 /* BaseTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8391DA2689D98000B35A53 /* BaseTabBarViewController.swift */; };
 		3B8392002689DFE000B35A53 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B8391FA2689DFE000B35A53 /* NotoSansKR-Medium.otf */; };
 		3B8392012689DFE000B35A53 /* NotoSansKR-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B8391FB2689DFE000B35A53 /* NotoSansKR-Thin.otf */; };
 		3B8392022689DFE000B35A53 /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B8391FC2689DFE000B35A53 /* NotoSansKR-Light.otf */; };
@@ -61,6 +67,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B2BAF26268B4FCE00CF3048 /* MyInfoMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoMainViewController.swift; sourceTree = "<group>"; };
+		3B2BAF27268B4FCE00CF3048 /* MyInfoMainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyInfoMainViewController.xib; sourceTree = "<group>"; };
+		3B2BAF2A268B5E9200CF3048 /* CustomTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarViewController.swift; sourceTree = "<group>"; };
+		3B2BAF2B268B5E9200CF3048 /* CustomTabBarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTabBarViewController.xib; sourceTree = "<group>"; };
+		3B2BAF35268CA4E000CF3048 /* PreviewAdpater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewAdpater.swift; sourceTree = "<group>"; };
+		3B2BAF38268CC44500CF3048 /* UITabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabBarController.swift; sourceTree = "<group>"; };
+		3B2BAF3C268CC5D000CF3048 /* TestMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMainViewController.swift; sourceTree = "<group>"; };
+		3B2BAF3D268CC5D000CF3048 /* TestMainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestMainViewController.xib; sourceTree = "<group>"; };
 		3B4037232689D6FC00AFAC40 /* OfMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OfMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B4037262689D6FC00AFAC40 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B4037282689D6FC00AFAC40 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,7 +82,6 @@
 		3B4037322689D6FE00AFAC40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B4037342689D6FE00AFAC40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B638FB6268A44430095F05B /* SignInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInfo.swift; sourceTree = "<group>"; };
-		3B638FBC268B0F3C0095F05B /* CustomTabBarCtrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarCtrl.swift; sourceTree = "<group>"; };
 		3B638FBE268B0FC40095F05B /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		3B638FC7268B485B0095F05B /* HomeMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainViewController.swift; sourceTree = "<group>"; };
 		3B638FC8268B485B0095F05B /* HomeMainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeMainViewController.xib; sourceTree = "<group>"; };
@@ -93,7 +106,6 @@
 		3B8391C62689D97F00B35A53 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		3B8391C92689D97F00B35A53 /* KobisKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KobisKey.swift; sourceTree = "<group>"; };
 		3B8391D92689D98000B35A53 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		3B8391DA2689D98000B35A53 /* BaseTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabBarViewController.swift; sourceTree = "<group>"; };
 		3B8391FA2689DFE000B35A53 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
 		3B8391FB2689DFE000B35A53 /* NotoSansKR-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Thin.otf"; sourceTree = "<group>"; };
 		3B8391FC2689DFE000B35A53 /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
@@ -139,6 +151,40 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		3B2BAF25268B4FBF00CF3048 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				3B2BAF26268B4FCE00CF3048 /* MyInfoMainViewController.swift */,
+				3B2BAF27268B4FCE00CF3048 /* MyInfoMainViewController.xib */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		3B2BAF2E268C9F2700CF3048 /* Preview */ = {
+			isa = PBXGroup;
+			children = (
+				3B2BAF35268CA4E000CF3048 /* PreviewAdpater.swift */,
+			);
+			path = Preview;
+			sourceTree = "<group>";
+		};
+		3B2BAF3A268CC5A600CF3048 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				3B2BAF3B268CC5AB00CF3048 /* Main */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
+		3B2BAF3B268CC5AB00CF3048 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				3B2BAF3C268CC5D000CF3048 /* TestMainViewController.swift */,
+				3B2BAF3D268CC5D000CF3048 /* TestMainViewController.xib */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		3B40371A2689D6FB00AFAC40 = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +206,7 @@
 		3B4037252689D6FC00AFAC40 /* OfMe */ = {
 			isa = PBXGroup;
 			children = (
+				3B2BAF3A268CC5A600CF3048 /* Test */,
 				3B638FBB268B0E380095F05B /* MyInfo */,
 				3B638FBA268B0E320095F05B /* Question */,
 				3B638FB9268B0E2A0095F05B /* Archive */,
@@ -210,6 +257,7 @@
 		3B638FBB268B0E380095F05B /* MyInfo */ = {
 			isa = PBXGroup;
 			children = (
+				3B2BAF25268B4FBF00CF3048 /* Main */,
 			);
 			path = MyInfo;
 			sourceTree = "<group>";
@@ -217,6 +265,7 @@
 		3B638FC6268B48430095F05B /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				3B2BAF2E268C9F2700CF3048 /* Preview */,
 				3B638FC7268B485B0095F05B /* HomeMainViewController.swift */,
 				3B638FC8268B485B0095F05B /* HomeMainViewController.xib */,
 			);
@@ -289,6 +338,7 @@
 				3B8391C52689D97F00B35A53 /* UITextView.swift */,
 				3B8391C62689D97F00B35A53 /* Color.swift */,
 				3B83920D2689E8A500B35A53 /* UITextField.swift */,
+				3B2BAF38268CC44500CF3048 /* UITabBarController.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -318,9 +368,9 @@
 			isa = PBXGroup;
 			children = (
 				3B8391D92689D98000B35A53 /* BaseViewController.swift */,
-				3B8391DA2689D98000B35A53 /* BaseTabBarViewController.swift */,
-				3B638FBC268B0F3C0095F05B /* CustomTabBarCtrl.swift */,
 				3B638FBE268B0FC40095F05B /* CustomTabBar.swift */,
+				3B2BAF2A268B5E9200CF3048 /* CustomTabBarViewController.swift */,
+				3B2BAF2B268B5E9200CF3048 /* CustomTabBarViewController.xib */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -441,13 +491,16 @@
 				3B8392012689DFE000B35A53 /* NotoSansKR-Thin.otf in Resources */,
 				3B4037332689D6FE00AFAC40 /* LaunchScreen.storyboard in Resources */,
 				3B8392022689DFE000B35A53 /* NotoSansKR-Light.otf in Resources */,
+				3B2BAF29268B4FCE00CF3048 /* MyInfoMainViewController.xib in Resources */,
 				3B83920A2689E12B00B35A53 /* LoginMainViewController.xib in Resources */,
 				3B638FCF268B488F0095F05B /* ArchiveMainViewController.xib in Resources */,
 				3B839223268A370B00B35A53 /* SignSubmitCollectionViewCell.xib in Resources */,
 				3B4037302689D6FE00AFAC40 /* Assets.xcassets in Resources */,
 				3B638FD4268B498C0095F05B /* QuestionMainViewController.xib in Resources */,
 				3B8392052689DFE000B35A53 /* NotoSansKR-Black.otf in Resources */,
+				3B2BAF3F268CC5D000CF3048 /* TestMainViewController.xib in Resources */,
 				3B83921B268A341300B35A53 /* InputAnyCollectionViewCell.xib in Resources */,
+				3B2BAF2D268B5E9200CF3048 /* CustomTabBarViewController.xib in Resources */,
 				3B8392042689DFE000B35A53 /* NotoSansKR-Bold.otf in Resources */,
 				3B8392002689DFE000B35A53 /* NotoSansKR-Medium.otf in Resources */,
 			);
@@ -512,20 +565,22 @@
 				3B8391E22689D98000B35A53 /* UIImage.swift in Sources */,
 				3B638FD3268B498C0095F05B /* QuestionMainViewController.swift in Sources */,
 				3B8391E82689D98000B35A53 /* UITextView.swift in Sources */,
+				3B2BAF3E268CC5D000CF3048 /* TestMainViewController.swift in Sources */,
 				3B8391F82689D98000B35A53 /* BaseViewController.swift in Sources */,
 				3B8391E32689D98000B35A53 /* UIViewController.swift in Sources */,
 				3B839222268A370B00B35A53 /* SignSubmitCollectionViewCell.swift in Sources */,
-				3B8391F92689D98000B35A53 /* BaseTabBarViewController.swift in Sources */,
+				3B2BAF39268CC44500CF3048 /* UITabBarController.swift in Sources */,
+				3B2BAF2C268B5E9200CF3048 /* CustomTabBarViewController.swift in Sources */,
 				3B8391E72689D98000B35A53 /* UILabel.swift in Sources */,
 				3B4037272689D6FC00AFAC40 /* AppDelegate.swift in Sources */,
 				3B83920C2689E49F00B35A53 /* ImageConstant.swift in Sources */,
 				3B8391E02689D98000B35A53 /* String.swift in Sources */,
 				3B8391E62689D98000B35A53 /* UIFont.swift in Sources */,
-				3B638FBD268B0F3C0095F05B /* CustomTabBarCtrl.swift in Sources */,
 				3B8391DE2689D98000B35A53 /* Date.swift in Sources */,
 				3B8391E12689D98000B35A53 /* UIButton.swift in Sources */,
 				3B8391EB2689D98000B35A53 /* KobisKey.swift in Sources */,
 				3B4037292689D6FC00AFAC40 /* SceneDelegate.swift in Sources */,
+				3B2BAF28268B4FCE00CF3048 /* MyInfoMainViewController.swift in Sources */,
 				3B8391DD2689D98000B35A53 /* Device.swift in Sources */,
 				3B839212268A246A00B35A53 /* SignInViewController.swift in Sources */,
 				3B83921E268A35BD00B35A53 /* InputPasswordCollectionViewCell.swift in Sources */,
@@ -536,6 +591,7 @@
 				3B638FB7268A44430095F05B /* SignInfo.swift in Sources */,
 				3B638FBF268B0FC40095F05B /* CustomTabBar.swift in Sources */,
 				3B8391E92689D98000B35A53 /* Color.swift in Sources */,
+				3B2BAF36268CA4E000CF3048 /* PreviewAdpater.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

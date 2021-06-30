@@ -40,6 +40,10 @@ class LoginMainViewController: UIViewController {
         self.view.endEditing(true)
     }
     
+    @IBAction func loginButtonTouchDown(_ sender: Any) {
+        self.changeRootViewController(CustomTabBarViewController())
+    }
+    
     @IBAction func signinButtonTouchDown(_ sender: Any) {
         let vc = SignInViewController()
         self.navigationController?.pushViewController(vc, animated: true)

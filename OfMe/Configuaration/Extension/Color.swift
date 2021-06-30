@@ -35,5 +35,7 @@ extension UIColor {
     class var gray3: UIColor { UIColor(hex: 0x828282) }
     class var gray2: UIColor { UIColor(hex: 0x4F4F4F) }
     class var borderColor: UIColor { UIColor(hex: 0xEDEDED) }
+    class var tabBarBlue: UIColor { UIColor(hex: 0x4761C6) }
+    class var mainBlue: UIColor { UIColor(hex: 0x1038BC) }
     
 }

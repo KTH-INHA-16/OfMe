@@ -47,6 +47,9 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="55" id="4Ze-1R-rih"/>
                     </constraints>
+                    <connections>
+                        <action selector="loginButtonTouchDown:" destination="-1" eventType="touchUpInside" id="TXJ-tK-g3Z"/>
+                    </connections>
                 </button>
                 <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x5J-Ah-GoF">
                     <rect key="frame" x="50" y="520" width="275" height="30"/>
