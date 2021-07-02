@@ -24,6 +24,16 @@ class TestMainViewController: BaseViewController {
         middleButton?.removeFromSuperview()
     }
     
+    @IBAction func categoryTouchDown(_ sender: Any) {
+        let vc = TestCategoryViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func testTouchDown(_ sender: Any) {
+        let vc = TestDetailViewController(step: 1)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func setUP() {
         let text = "혹시 \(nickName)님은\n내가 어떤 유형인지\n알고 계신가요?"
         let attributedString = NSMutableAttributedString(string: text)

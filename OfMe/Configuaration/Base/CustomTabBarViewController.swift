@@ -12,14 +12,11 @@ class CustomTabBarViewController: UITabBarController, UITabBarControllerDelegate
     let archiveTabBarItem = UITabBarItem(title: "Q&A", image: UIImage(named: ImgName.imgName(of: .questionIcon)), tag: 2)
     let myinfoTabBarItem = UITabBarItem(title: "마이", image: UIImage(named: ImgName.imgName(of: .myInfoIcon)), tag: 3)
 
-//    required init(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)!
-//    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
         
+        // MARK: use KVC to change TabBar
         let tabBar = { () -> CustomTabBar in
             let tabBar = CustomTabBar()
             tabBar.delegate = self

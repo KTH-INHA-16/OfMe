@@ -1,10 +1,3 @@
-//
-//  UIButton.swift
-//  EduTemplate
-//
-//  Created by Zero Yoon on 2020/10/08.
-//
-
 import UIKit
 
 // MARK: UIButton 내에 Indicator 표시
@@ -27,10 +20,20 @@ extension UIButton {
         }
     }
     
-    func addRightImage(image: UIImage, offset: CGFloat) {
-        self.setImage(image, for: .normal)
-        self.imageView?.translatesAutoresizingMaskIntoConstraints = false
-        self.imageView?.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0.0).isActive = true
-        self.imageView?.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -offset).isActive = true
+    func middleButtonShadow() {
+        self.layer.shadowOffset = CGSize(width: 0, height: 0)
+        self.layer.shadowRadius = 10
+        self.layer.shadowColor = UIColor.lightGray.cgColor
+        self.layer.shadowOpacity = 0.3
+    }
+    
+    
+    func setCustomTitle(text: String, font: UIFont, color: UIColor) {
+        self.setAttributedTitle(
+            NSAttributedString(string: text,
+                               attributes: [
+                                .font : font,
+                                .foregroundColor : color
+                               ]), for: .normal)
     }
 }

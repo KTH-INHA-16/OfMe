@@ -26,9 +26,11 @@ class HomeMainViewController: BaseViewController {
                 self.preview?.backgroundView.removeFromSuperview()
                 self.preview?.view.removeFromSuperview()
             case 1:
-                break
+                let vc = TestMainViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
             default:
-                break
+                let vc = TestConceptMainViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
             }
         }
     }

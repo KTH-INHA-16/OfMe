@@ -50,6 +50,9 @@
                         <constraint firstAttribute="height" constant="55" id="siZ-fX-hzX"/>
                     </constraints>
                     <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="categoryTouchDown:" destination="-1" eventType="touchUpInside" id="GJc-b2-iaE"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fco-u0-IWt">
                     <rect key="frame" x="49" y="285.5" width="222" height="55"/>
@@ -57,6 +60,9 @@
                         <constraint firstAttribute="height" constant="55" id="m3u-qe-9Km"/>
                     </constraints>
                     <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="testTouchDown:" destination="-1" eventType="touchUpInside" id="oea-N5-NcD"/>
+                    </connections>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

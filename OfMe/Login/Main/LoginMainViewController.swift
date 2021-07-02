@@ -2,10 +2,10 @@ import UIKit
 
 class LoginMainViewController: UIViewController {
     
-    let signinText = "아직 회원이 아니라면, 회원가입하기"
-    let signinFrontText = "아직 회원이 아니라면,"
-    let signinBackText = "회원가입하기"
-    let submitBtnText = "로그인"
+    private let signinText = "아직 회원이 아니라면, 회원가입하기"
+    private let signinFrontText = "아직 회원이 아니라면,"
+    private let signinBackText = "회원가입하기"
+    private let submitBtnText = "로그인"
 
     @IBOutlet weak var idTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!

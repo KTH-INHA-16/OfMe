@@ -37,5 +37,7 @@ extension UIColor {
     class var borderColor: UIColor { UIColor(hex: 0xEDEDED) }
     class var tabBarBlue: UIColor { UIColor(hex: 0x4761C6) }
     class var mainBlue: UIColor { UIColor(hex: 0x1038BC) }
+    class var purple: UIColor { UIColor(hex: 0xF4F5FF) }
+    class var mainBlueBlur: UIColor { UIColor(hex: 0x1038BC) }
     
 }
