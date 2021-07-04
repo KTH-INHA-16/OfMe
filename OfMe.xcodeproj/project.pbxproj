@@ -24,6 +24,17 @@
 		3B2BAF39268CC44500CF3048 /* UITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2BAF38268CC44500CF3048 /* UITabBarController.swift */; };
 		3B2BAF3E268CC5D000CF3048 /* TestMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2BAF3C268CC5D000CF3048 /* TestMainViewController.swift */; };
 		3B2BAF3F268CC5D000CF3048 /* TestMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B2BAF3D268CC5D000CF3048 /* TestMainViewController.xib */; };
+		3B326DD32690971100094C0D /* TestConceptThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B326DD12690971100094C0D /* TestConceptThirdViewController.swift */; };
+		3B326DD42690971100094C0D /* TestConceptThirdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B326DD22690971100094C0D /* TestConceptThirdViewController.xib */; };
+		3B326DD72691ACF000094C0D /* TestConceptThird.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B326DD62691ACF000094C0D /* TestConceptThird.swift */; };
+		3B326DDB26920F8300094C0D /* TestConceptResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B326DD926920F8300094C0D /* TestConceptResultViewController.swift */; };
+		3B326DDC26920F8300094C0D /* TestConceptResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B326DDA26920F8300094C0D /* TestConceptResultViewController.xib */; };
+		3B3ECE2D26921C85006BCD5D /* ConceptDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3ECE2C26921C85006BCD5D /* ConceptDummy.swift */; };
+		3B3ECE332692283E006BCD5D /* ConceptResultAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3ECE322692283E006BCD5D /* ConceptResultAdapter.swift */; };
+		3B3ECE37269228AB006BCD5D /* ConceptResultTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3ECE35269228AB006BCD5D /* ConceptResultTextCell.swift */; };
+		3B3ECE38269228AB006BCD5D /* ConceptResultTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B3ECE36269228AB006BCD5D /* ConceptResultTextCell.xib */; };
+		3B3ECE3C269228E7006BCD5D /* ConceptResultMusicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3ECE3A269228E7006BCD5D /* ConceptResultMusicCell.swift */; };
+		3B3ECE3D269228E7006BCD5D /* ConceptResultMusicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B3ECE3B269228E7006BCD5D /* ConceptResultMusicCell.xib */; };
 		3B4037272689D6FC00AFAC40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4037262689D6FC00AFAC40 /* AppDelegate.swift */; };
 		3B4037292689D6FC00AFAC40 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4037282689D6FC00AFAC40 /* SceneDelegate.swift */; };
 		3B4037302689D6FE00AFAC40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B40372F2689D6FE00AFAC40 /* Assets.xcassets */; };
@@ -69,13 +80,6 @@
 		3B83920E2689E8A500B35A53 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B83920D2689E8A500B35A53 /* UITextField.swift */; };
 		3B839212268A246A00B35A53 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B839210268A246A00B35A53 /* SignInViewController.swift */; };
 		3B839213268A246A00B35A53 /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B839211268A246A00B35A53 /* SignInViewController.xib */; };
-		3B839216268A331200B35A53 /* SingInAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B839215268A331200B35A53 /* SingInAdapter.swift */; };
-		3B83921A268A341300B35A53 /* InputAnyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B839218268A341300B35A53 /* InputAnyCollectionViewCell.swift */; };
-		3B83921B268A341300B35A53 /* InputAnyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B839219268A341300B35A53 /* InputAnyCollectionViewCell.xib */; };
-		3B83921E268A35BD00B35A53 /* InputPasswordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B83921C268A35BD00B35A53 /* InputPasswordCollectionViewCell.swift */; };
-		3B83921F268A35BD00B35A53 /* InputPasswordCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B83921D268A35BD00B35A53 /* InputPasswordCollectionViewCell.xib */; };
-		3B839222268A370B00B35A53 /* SignSubmitCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B839220268A370B00B35A53 /* SignSubmitCollectionViewCell.swift */; };
-		3B839223268A370B00B35A53 /* SignSubmitCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B839221268A370B00B35A53 /* SignSubmitCollectionViewCell.xib */; };
 		3BBD932E268F51F7003BB706 /* TestConceptDetailFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBD932C268F51F7003BB706 /* TestConceptDetailFirstViewController.swift */; };
 		3BBD932F268F51F7003BB706 /* TestConceptDetailFirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BBD932D268F51F7003BB706 /* TestConceptDetailFirstViewController.xib */; };
 		3BBD9333268F63C4003BB706 /* TestConceptHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBD9331268F63C4003BB706 /* TestConceptHeader.swift */; };
@@ -110,6 +114,17 @@
 		3B2BAF38268CC44500CF3048 /* UITabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabBarController.swift; sourceTree = "<group>"; };
 		3B2BAF3C268CC5D000CF3048 /* TestMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMainViewController.swift; sourceTree = "<group>"; };
 		3B2BAF3D268CC5D000CF3048 /* TestMainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestMainViewController.xib; sourceTree = "<group>"; };
+		3B326DD12690971100094C0D /* TestConceptThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConceptThirdViewController.swift; sourceTree = "<group>"; };
+		3B326DD22690971100094C0D /* TestConceptThirdViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestConceptThirdViewController.xib; sourceTree = "<group>"; };
+		3B326DD62691ACF000094C0D /* TestConceptThird.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConceptThird.swift; sourceTree = "<group>"; };
+		3B326DD926920F8300094C0D /* TestConceptResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConceptResultViewController.swift; sourceTree = "<group>"; };
+		3B326DDA26920F8300094C0D /* TestConceptResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestConceptResultViewController.xib; sourceTree = "<group>"; };
+		3B3ECE2C26921C85006BCD5D /* ConceptDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConceptDummy.swift; sourceTree = "<group>"; };
+		3B3ECE322692283E006BCD5D /* ConceptResultAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConceptResultAdapter.swift; sourceTree = "<group>"; };
+		3B3ECE35269228AB006BCD5D /* ConceptResultTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConceptResultTextCell.swift; sourceTree = "<group>"; };
+		3B3ECE36269228AB006BCD5D /* ConceptResultTextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConceptResultTextCell.xib; sourceTree = "<group>"; };
+		3B3ECE3A269228E7006BCD5D /* ConceptResultMusicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConceptResultMusicCell.swift; sourceTree = "<group>"; };
+		3B3ECE3B269228E7006BCD5D /* ConceptResultMusicCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConceptResultMusicCell.xib; sourceTree = "<group>"; };
 		3B4037232689D6FC00AFAC40 /* OfMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OfMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B4037262689D6FC00AFAC40 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B4037282689D6FC00AFAC40 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -157,13 +172,6 @@
 		3B83920D2689E8A500B35A53 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		3B839210268A246A00B35A53 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		3B839211268A246A00B35A53 /* SignInViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignInViewController.xib; sourceTree = "<group>"; };
-		3B839215268A331200B35A53 /* SingInAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingInAdapter.swift; sourceTree = "<group>"; };
-		3B839218268A341300B35A53 /* InputAnyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputAnyCollectionViewCell.swift; sourceTree = "<group>"; };
-		3B839219268A341300B35A53 /* InputAnyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputAnyCollectionViewCell.xib; sourceTree = "<group>"; };
-		3B83921C268A35BD00B35A53 /* InputPasswordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPasswordCollectionViewCell.swift; sourceTree = "<group>"; };
-		3B83921D268A35BD00B35A53 /* InputPasswordCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputPasswordCollectionViewCell.xib; sourceTree = "<group>"; };
-		3B839220268A370B00B35A53 /* SignSubmitCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignSubmitCollectionViewCell.swift; sourceTree = "<group>"; };
-		3B839221268A370B00B35A53 /* SignSubmitCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignSubmitCollectionViewCell.xib; sourceTree = "<group>"; };
 		3BBD932C268F51F7003BB706 /* TestConceptDetailFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConceptDetailFirstViewController.swift; sourceTree = "<group>"; };
 		3BBD932D268F51F7003BB706 /* TestConceptDetailFirstViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestConceptDetailFirstViewController.xib; sourceTree = "<group>"; };
 		3BBD9331268F63C4003BB706 /* TestConceptHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConceptHeader.swift; sourceTree = "<group>"; };
@@ -273,6 +281,63 @@
 				3B2BAF3D268CC5D000CF3048 /* TestMainViewController.xib */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		3B326DD0269095F400094C0D /* Third */ = {
+			isa = PBXGroup;
+			children = (
+				3B326DD52691ACE400094C0D /* Adapter */,
+				3B326DD12690971100094C0D /* TestConceptThirdViewController.swift */,
+				3B326DD22690971100094C0D /* TestConceptThirdViewController.xib */,
+			);
+			path = Third;
+			sourceTree = "<group>";
+		};
+		3B326DD52691ACE400094C0D /* Adapter */ = {
+			isa = PBXGroup;
+			children = (
+				3B326DD62691ACF000094C0D /* TestConceptThird.swift */,
+			);
+			path = Adapter;
+			sourceTree = "<group>";
+		};
+		3B326DD826920F6C00094C0D /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				3B3ECE3426922886006BCD5D /* Cell */,
+				3B3ECE3126922831006BCD5D /* Adater */,
+				3B3ECE2B26921C6E006BCD5D /* ConceptDummy */,
+				3B326DD926920F8300094C0D /* TestConceptResultViewController.swift */,
+				3B326DDA26920F8300094C0D /* TestConceptResultViewController.xib */,
+			);
+			path = Result;
+			sourceTree = "<group>";
+		};
+		3B3ECE2B26921C6E006BCD5D /* ConceptDummy */ = {
+			isa = PBXGroup;
+			children = (
+				3B3ECE2C26921C85006BCD5D /* ConceptDummy.swift */,
+			);
+			path = ConceptDummy;
+			sourceTree = "<group>";
+		};
+		3B3ECE3126922831006BCD5D /* Adater */ = {
+			isa = PBXGroup;
+			children = (
+				3B3ECE322692283E006BCD5D /* ConceptResultAdapter.swift */,
+			);
+			path = Adater;
+			sourceTree = "<group>";
+		};
+		3B3ECE3426922886006BCD5D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3B3ECE35269228AB006BCD5D /* ConceptResultTextCell.swift */,
+				3B3ECE36269228AB006BCD5D /* ConceptResultTextCell.xib */,
+				3B3ECE3A269228E7006BCD5D /* ConceptResultMusicCell.swift */,
+				3B3ECE3B269228E7006BCD5D /* ConceptResultMusicCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		3B40371A2689D6FB00AFAC40 = {
@@ -403,6 +468,7 @@
 		3B6CF6DF268EEC26002A4DDE /* Concept */ = {
 			isa = PBXGroup;
 			children = (
+				3B326DD826920F6C00094C0D /* Result */,
 				3BBD932A268F51C9003BB706 /* Detail */,
 				3B6CF6E0268EEC31002A4DDE /* Main */,
 			);
@@ -518,38 +584,16 @@
 			isa = PBXGroup;
 			children = (
 				3B638FB5268A44340095F05B /* Model */,
-				3B839217268A33BC00B35A53 /* Cell */,
-				3B839214268A32FF00B35A53 /* Adapter */,
 				3B839210268A246A00B35A53 /* SignInViewController.swift */,
 				3B839211268A246A00B35A53 /* SignInViewController.xib */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
 		};
-		3B839214268A32FF00B35A53 /* Adapter */ = {
-			isa = PBXGroup;
-			children = (
-				3B839215268A331200B35A53 /* SingInAdapter.swift */,
-			);
-			path = Adapter;
-			sourceTree = "<group>";
-		};
-		3B839217268A33BC00B35A53 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				3B839218268A341300B35A53 /* InputAnyCollectionViewCell.swift */,
-				3B839219268A341300B35A53 /* InputAnyCollectionViewCell.xib */,
-				3B83921C268A35BD00B35A53 /* InputPasswordCollectionViewCell.swift */,
-				3B83921D268A35BD00B35A53 /* InputPasswordCollectionViewCell.xib */,
-				3B839220268A370B00B35A53 /* SignSubmitCollectionViewCell.swift */,
-				3B839221268A370B00B35A53 /* SignSubmitCollectionViewCell.xib */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
 		3BBD932A268F51C9003BB706 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				3B326DD0269095F400094C0D /* Third */,
 				3BBD933C268F739E003BB706 /* Menu */,
 				3BBD9330268F637B003BB706 /* Cell */,
 				3BBD933F268F7634003BB706 /* Second */,
@@ -687,27 +731,28 @@
 				3BBD934A268F7AD8003BB706 /* TestConceptDescriptCollectionViewCell.xib in Resources */,
 				3B638FCA268B485B0095F05B /* HomeMainViewController.xib in Resources */,
 				3BBD9343268F7652003BB706 /* TestConceptSecondViewController.xib in Resources */,
-				3B83921F268A35BD00B35A53 /* InputPasswordCollectionViewCell.xib in Resources */,
 				3B28D2F8268DEBD6005BCDE8 /* TestCategoryViewController.xib in Resources */,
 				3B8392012689DFE000B35A53 /* NotoSansKR-Thin.otf in Resources */,
 				3B4037332689D6FE00AFAC40 /* LaunchScreen.storyboard in Resources */,
+				3B326DD42690971100094C0D /* TestConceptThirdViewController.xib in Resources */,
 				3B28D304268E1010005BCDE8 /* TestDetailViewController.xib in Resources */,
+				3B326DDC26920F8300094C0D /* TestConceptResultViewController.xib in Resources */,
 				3B6CF6DD268EBC39002A4DDE /* TestResultViewController.xib in Resources */,
 				3B8392022689DFE000B35A53 /* NotoSansKR-Light.otf in Resources */,
 				3B2BAF29268B4FCE00CF3048 /* MyInfoMainViewController.xib in Resources */,
 				3BBD9334268F63C4003BB706 /* TestConceptHeader.xib in Resources */,
+				3B3ECE3D269228E7006BCD5D /* ConceptResultMusicCell.xib in Resources */,
 				3B83920A2689E12B00B35A53 /* LoginMainViewController.xib in Resources */,
 				3B638FCF268B488F0095F05B /* ArchiveMainViewController.xib in Resources */,
-				3B839223268A370B00B35A53 /* SignSubmitCollectionViewCell.xib in Resources */,
 				3B6CF6E4268EEC43002A4DDE /* TestConceptMainViewController.xib in Resources */,
 				3B4037302689D6FE00AFAC40 /* Assets.xcassets in Resources */,
+				3B3ECE38269228AB006BCD5D /* ConceptResultTextCell.xib in Resources */,
 				3B638FD4268B498C0095F05B /* QuestionMainViewController.xib in Resources */,
 				3BBD932F268F51F7003BB706 /* TestConceptDetailFirstViewController.xib in Resources */,
 				3BBD933B268F68D0003BB706 /* ConceptTestCollectionViewCell.xib in Resources */,
 				3B8392052689DFE000B35A53 /* NotoSansKR-Black.otf in Resources */,
 				3B28D300268DF33E005BCDE8 /* CategoryCollectionViewCell.xib in Resources */,
 				3B2BAF3F268CC5D000CF3048 /* TestMainViewController.xib in Resources */,
-				3B83921B268A341300B35A53 /* InputAnyCollectionViewCell.xib in Resources */,
 				3B2BAF2D268B5E9200CF3048 /* CustomTabBarViewController.xib in Resources */,
 				3B8392042689DFE000B35A53 /* NotoSansKR-Bold.otf in Resources */,
 				3B8392002689DFE000B35A53 /* NotoSansKR-Medium.otf in Resources */,
@@ -777,6 +822,8 @@
 				3BBD9337268F6681003BB706 /* ConceptFirstAdapter.swift in Sources */,
 				3BBD9333268F63C4003BB706 /* TestConceptHeader.swift in Sources */,
 				3B8391E22689D98000B35A53 /* UIImage.swift in Sources */,
+				3B3ECE2D26921C85006BCD5D /* ConceptDummy.swift in Sources */,
+				3B3ECE37269228AB006BCD5D /* ConceptResultTextCell.swift in Sources */,
 				3B638FD3268B498C0095F05B /* QuestionMainViewController.swift in Sources */,
 				3B8391E82689D98000B35A53 /* UITextView.swift in Sources */,
 				3B28D307268E133A005BCDE8 /* CircularProgressBar.swift in Sources */,
@@ -785,18 +832,21 @@
 				3B8391F82689D98000B35A53 /* BaseViewController.swift in Sources */,
 				3BBD9342268F7652003BB706 /* TestConceptSecondViewController.swift in Sources */,
 				3B8391E32689D98000B35A53 /* UIViewController.swift in Sources */,
-				3B839222268A370B00B35A53 /* SignSubmitCollectionViewCell.swift in Sources */,
 				3B2BAF39268CC44500CF3048 /* UITabBarController.swift in Sources */,
 				3B28D2FF268DF33E005BCDE8 /* CategoryCollectionViewCell.swift in Sources */,
 				3B2BAF2C268B5E9200CF3048 /* CustomTabBarViewController.swift in Sources */,
 				3B8391E72689D98000B35A53 /* UILabel.swift in Sources */,
 				3B28D309268E34C9005BCDE8 /* DummyString.swift in Sources */,
 				3B4037272689D6FC00AFAC40 /* AppDelegate.swift in Sources */,
+				3B3ECE332692283E006BCD5D /* ConceptResultAdapter.swift in Sources */,
 				3B83920C2689E49F00B35A53 /* ImageConstant.swift in Sources */,
+				3B326DD32690971100094C0D /* TestConceptThirdViewController.swift in Sources */,
 				3B8391E02689D98000B35A53 /* String.swift in Sources */,
 				3B8391E62689D98000B35A53 /* UIFont.swift in Sources */,
+				3B3ECE3C269228E7006BCD5D /* ConceptResultMusicCell.swift in Sources */,
 				3B28D2FB268DF2A5005BCDE8 /* CategoryAdapter.swift in Sources */,
 				3B8391DE2689D98000B35A53 /* Date.swift in Sources */,
+				3B326DD72691ACF000094C0D /* TestConceptThird.swift in Sources */,
 				3B8391E12689D98000B35A53 /* UIButton.swift in Sources */,
 				3BBD933E268F73AB003BB706 /* ConceptFirstMenu.swift in Sources */,
 				3B8391EB2689D98000B35A53 /* KobisKey.swift in Sources */,
@@ -805,12 +855,10 @@
 				3BBD933A268F68D0003BB706 /* ConceptTestCollectionViewCell.swift in Sources */,
 				3B8391DD2689D98000B35A53 /* Device.swift in Sources */,
 				3B839212268A246A00B35A53 /* SignInViewController.swift in Sources */,
-				3B83921E268A35BD00B35A53 /* InputPasswordCollectionViewCell.swift in Sources */,
 				3B8391DB2689D98000B35A53 /* Constant.swift in Sources */,
-				3B839216268A331200B35A53 /* SingInAdapter.swift in Sources */,
 				3B8391DC2689D98000B35A53 /* IndicatorView.swift in Sources */,
-				3B83921A268A341300B35A53 /* InputAnyCollectionViewCell.swift in Sources */,
 				3B6CF6E3268EEC43002A4DDE /* TestConceptMainViewController.swift in Sources */,
+				3B326DDB26920F8300094C0D /* TestConceptResultViewController.swift in Sources */,
 				3B638FB7268A44430095F05B /* SignInfo.swift in Sources */,
 				3B638FBF268B0FC40095F05B /* CustomTabBar.swift in Sources */,
 				3B28D303268E1010005BCDE8 /* TestDetailViewController.swift in Sources */,

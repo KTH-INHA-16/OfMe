@@ -17,8 +17,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="261" height="220"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oqi-ie-x33">
-                        <rect key="frame" x="109.5" y="121.5" width="42" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oqi-ie-x33">
+                        <rect key="frame" x="110" y="122" width="41.5" height="20.5"/>
                         <attributedString key="attributedText">
                             <fragment content="Label">
                                 <attributes>
@@ -32,7 +32,7 @@
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="oqi-ie-x33" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="cQQ-gl-iv6"/>
+                <constraint firstItem="oqi-ie-x33" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="Cb1-Qt-2uQ"/>
                 <constraint firstItem="oqi-ie-x33" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" id="mNf-Dy-UeR"/>
             </constraints>
             <size key="customSize" width="261" height="220"/>

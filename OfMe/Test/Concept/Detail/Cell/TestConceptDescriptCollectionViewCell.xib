@@ -17,20 +17,36 @@
                 <rect key="frame" x="0.0" y="0.0" width="265" height="226"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Opi-Rq-0ha">
-                        <rect key="frame" x="20" y="125" width="225" height="20.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MsJ-5C-7gG">
+                        <rect key="frame" x="0.0" y="44" width="265" height="152"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Opi-Rq-0ha">
+                                <rect key="frame" x="20" y="66" width="225" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.98039871450000005" green="0.98038035629999998" blue="0.98039287330000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Opi-Rq-0ha" secondAttribute="trailing" constant="20" id="IOc-C0-eeK"/>
+                            <constraint firstItem="Opi-Rq-0ha" firstAttribute="leading" secondItem="MsJ-5C-7gG" secondAttribute="leading" constant="20" id="aXK-Ks-n39"/>
+                            <constraint firstItem="Opi-Rq-0ha" firstAttribute="centerY" secondItem="MsJ-5C-7gG" secondAttribute="centerY" id="xVe-iA-Dna"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="6"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <color key="backgroundColor" red="0.98039871450000005" green="0.98038035629999998" blue="0.98039287330000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
-                <constraint firstItem="Opi-Rq-0ha" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" constant="20" id="4QJ-SE-2VN"/>
-                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="Opi-Rq-0ha" secondAttribute="trailing" constant="20" id="J9V-tt-mIa"/>
-                <constraint firstItem="Opi-Rq-0ha" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" id="OxJ-0h-zYa"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="MsJ-5C-7gG" secondAttribute="bottom" constant="30" id="9iO-XN-YbC"/>
+                <constraint firstItem="MsJ-5C-7gG" firstAttribute="top" secondItem="ZTg-uK-7eu" secondAttribute="top" id="Cew-L6-i1h"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="MsJ-5C-7gG" secondAttribute="trailing" id="bud-vr-W3f"/>
+                <constraint firstItem="MsJ-5C-7gG" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" id="uNs-wa-rXS"/>
             </constraints>
             <size key="customSize" width="265" height="226"/>
             <userDefinedRuntimeAttributes>

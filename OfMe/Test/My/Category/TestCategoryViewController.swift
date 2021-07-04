@@ -37,6 +37,7 @@ class TestCategoryViewController: BaseViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationItem.title = "나를 먼저 알기"
         middleButton = self.tabBarController?.normalMiddleButton()
     }
     

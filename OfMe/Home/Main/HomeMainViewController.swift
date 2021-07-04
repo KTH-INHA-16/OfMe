@@ -51,22 +51,19 @@ class HomeMainViewController: BaseViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        if let preview = preview {
-            self.view.addSubview(preview.backgroundView)
-            UIView.animate(withDuration: 0.3) {
-                self.view.addSubview(preview.view)
-            }
-        }
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
         middleButton?.removeFromSuperview()
     }
     
     @objc func middleTouchDown(_ sender: UIButton) {
-        let vc = TestMainViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        if let preview = preview {
+            self.view.addSubview(preview.backgroundView)
+            UIView.animate(withDuration: 0.3) {
+                self.view.addSubview(preview.view)
+            }
+        }
+//        let vc = TestMainViewController()
+//        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
