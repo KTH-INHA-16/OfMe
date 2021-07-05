@@ -1,6 +1,11 @@
 import UIKit
 
 class HomeMainViewController: BaseViewController {
+    private var startTime: Date = Date()
+    private var timer: Timer = Timer()
+    private var customView: HomeCustom = HomeCustom()
+    private var isPlay: Bool = true
+    private var isFirst: Bool = false
     private var preview: PreviewAdapter?
     private lazy var bubbleImage: UIImageView = {
         let imageView = UIImageView()
@@ -19,7 +24,6 @@ class HomeMainViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         preview = PreviewAdapter { button in
             switch button.tag {
             case 0:
@@ -39,6 +43,34 @@ class HomeMainViewController: BaseViewController {
         middleButton = self.tabBarController?.testMiddleButton()
         middleButton?.addTarget(self, action: #selector(middleTouchDown(_:)), for: .touchDown)
         self.navigationController?.navigationBar.isHidden = true
+        if isFirst {
+            [bubbleImage, label].forEach { $0?.removeFromSuperview() }
+            customView.setConstraint(view: self.view)
+            customView.timeButton?.addTarget(self, action: #selector(timerTouchDown(_:)), for: .touchDown)
+            setTimer(startTime: startTime)
+        } else {
+            setFirst()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = false
+        middleButton?.removeFromSuperview()
+    }
+    
+    func setTimer(startTime: Date) {
+        DispatchQueue.main.async { [weak self] in
+            self?.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] timer in
+                let startSec = Int(Date().timeIntervalSince(startTime))
+                let diffSec = startSec % 60
+                let diffMin = startSec / 60
+                let diffHour = startSec / 3600
+                self?.customView.timeLabel?.text = "\(diffHour > 0 ? "\(diffHour)시간 \(diffMin)분 \(diffSec)초" : "\(diffMin)분") \(diffSec)초"
+            }
+        }
+    }
+    
+    func setFirst() {
         self.view.addSubview(bubbleImage)
         bubbleImage.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(self.view.frame.height*0.48)
@@ -46,14 +78,23 @@ class HomeMainViewController: BaseViewController {
         }
         bubbleImage.addSubview(label)
         label.snp.makeConstraints { make in
-            make.centerY.equalToSuperview().inset(-20)
+            make.centerY.equalToSuperview().inset(-30)
             make.left.right.equalToSuperview().inset(15)
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden = false
-        middleButton?.removeFromSuperview()
+    func changeIsFirst() {
+        isFirst = true
+    }
+    
+    @objc func timerTouchDown(_ sender: UIButton) {
+        if isPlay {
+            timer.invalidate()
+        } else {
+            setTimer(startTime: startTime)
+        }
+        isPlay = !isPlay
+        customView.setButton(customView.timeButton!, isPlay: isPlay)
     }
     
     @objc func middleTouchDown(_ sender: UIButton) {

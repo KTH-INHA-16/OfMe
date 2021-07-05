@@ -80,6 +80,7 @@
 		3B83920E2689E8A500B35A53 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B83920D2689E8A500B35A53 /* UITextField.swift */; };
 		3B839212268A246A00B35A53 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B839210268A246A00B35A53 /* SignInViewController.swift */; };
 		3B839213268A246A00B35A53 /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B839211268A246A00B35A53 /* SignInViewController.xib */; };
+		3B915001269344F9004FE9C0 /* HomeCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B915000269344F9004FE9C0 /* HomeCustom.swift */; };
 		3BBD932E268F51F7003BB706 /* TestConceptDetailFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBD932C268F51F7003BB706 /* TestConceptDetailFirstViewController.swift */; };
 		3BBD932F268F51F7003BB706 /* TestConceptDetailFirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BBD932D268F51F7003BB706 /* TestConceptDetailFirstViewController.xib */; };
 		3BBD9333268F63C4003BB706 /* TestConceptHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBD9331268F63C4003BB706 /* TestConceptHeader.swift */; };
@@ -172,6 +173,7 @@
 		3B83920D2689E8A500B35A53 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		3B839210268A246A00B35A53 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		3B839211268A246A00B35A53 /* SignInViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignInViewController.xib; sourceTree = "<group>"; };
+		3B915000269344F9004FE9C0 /* HomeCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCustom.swift; sourceTree = "<group>"; };
 		3BBD932C268F51F7003BB706 /* TestConceptDetailFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConceptDetailFirstViewController.swift; sourceTree = "<group>"; };
 		3BBD932D268F51F7003BB706 /* TestConceptDetailFirstViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestConceptDetailFirstViewController.xib; sourceTree = "<group>"; };
 		3BBD9331268F63C4003BB706 /* TestConceptHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConceptHeader.swift; sourceTree = "<group>"; };
@@ -420,6 +422,7 @@
 		3B638FC6268B48430095F05B /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				3B914FFF26934444004FE9C0 /* Custom */,
 				3B2BAF2E268C9F2700CF3048 /* Preview */,
 				3B638FC7268B485B0095F05B /* HomeMainViewController.swift */,
 				3B638FC8268B485B0095F05B /* HomeMainViewController.xib */,
@@ -588,6 +591,14 @@
 				3B839211268A246A00B35A53 /* SignInViewController.xib */,
 			);
 			path = SignIn;
+			sourceTree = "<group>";
+		};
+		3B914FFF26934444004FE9C0 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				3B915000269344F9004FE9C0 /* HomeCustom.swift */,
+			);
+			path = Custom;
 			sourceTree = "<group>";
 		};
 		3BBD932A268F51C9003BB706 /* Detail */ = {
@@ -844,6 +855,7 @@
 				3B8391E02689D98000B35A53 /* String.swift in Sources */,
 				3B8391E62689D98000B35A53 /* UIFont.swift in Sources */,
 				3B3ECE3C269228E7006BCD5D /* ConceptResultMusicCell.swift in Sources */,
+				3B915001269344F9004FE9C0 /* HomeCustom.swift in Sources */,
 				3B28D2FB268DF2A5005BCDE8 /* CategoryAdapter.swift in Sources */,
 				3B8391DE2689D98000B35A53 /* Date.swift in Sources */,
 				3B326DD72691ACF000094C0D /* TestConceptThird.swift in Sources */,

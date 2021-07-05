@@ -131,6 +131,8 @@ class PreviewAdapter: NSObject {
     
     @objc func touchDown(_ sender: UIButton) {
         guard let selected = selected else { return }
+        backgroundView.removeFromSuperview()
+        view.removeFromSuperview()
         selected(sender)
     }
 }

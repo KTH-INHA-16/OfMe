@@ -21,6 +21,10 @@ struct ImgName {
         case bubble = "bubble"
         case testIcon = "testIcon"
         case normalIcon = "normalIcon"
+        case moon = "moon"
+        case play = "play"
+        case pause = "pause"
+        case info = "info"
     }
     
     static func imgName(of imgType: imgNameType) -> String {

@@ -30,6 +30,17 @@ class TestConceptResultViewController: BaseViewController {
         circularProgressBar?.removeFromSuperview()
     }
     
+    @IBAction func startTouchDown(_ sender: Any) {
+        self.navigationController?.viewControllers.forEach {
+            if $0 is HomeMainViewController {
+                if let vc = $0 as? HomeMainViewController {
+                    vc.changeIsFirst()
+                    self.navigationController?.popToViewController(vc, animated: true)
+                }
+            }
+        }
+    }
+    
     func setUP() {
         charactorLabel.text = data.charactorText
         charactorLabel.font = .Notos(.bold, size: 22)

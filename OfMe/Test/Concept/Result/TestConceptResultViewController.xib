@@ -99,6 +99,9 @@
                                     <real key="value" value="6"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="startTouchDown:" destination="-1" eventType="touchUpInside" id="aWD-Ar-yHD"/>
+                            </connections>
                         </button>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="0wD-EC-uvl">
                             <rect key="frame" x="0.0" y="492.5" width="434" height="250"/>

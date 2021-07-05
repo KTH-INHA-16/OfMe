@@ -1,33 +1,5 @@
 struct Constant {
-    struct Home {
-        static let introText: String = "BIENNALE INTRODUCTION".localized
-        static let noticeText: String = "ANNOUNCEMENT".localized
-        static let newsText: String = "ANNOUNCED NEWS".localized
-        static let onlineDescriptText: String = "Now watch all the exhibitions online!".localized
-        static let offlineDescriptText: String = "The hot exhibition!".localized
-        static let archiveDescriptText: String = "Search all the exhibitions during before 3 times!".localized
-    }
-    
-    struct Icon {
-        static let LikeRed: String = "LikeRed"
-        static let LikeBlack: String = "LikeBlack"
-        static let iconMap: String = "IconMap"
-        static let iconHeadPhone: String = "IconHeadPhone"
-    }
-    
-    struct MyInfo {
-        static let changePassword:String = "Change Password".localized
-        static let changePasswordContext: String = "Please enter your current password and a new password. 12-16 digits can be combined with characters, numbers, and special characters.".localized
-        static let placeholdChangePassword1:String = "Current Password".localized
-        static let placeholdChangePassword2:String = "New Password"
-        static let placeholdChangePassword3:String = "Re-enter New Password"
-        static let agreeAll: String = "Agree to all terms and conditions.".localized
-        static let agree1: String = "Limitation to Processing of Personally Identifiable Information(required)".localized
-        static let agree2: String = "Collection and Use of Personal Information(required)".localized
-        static let agree3: String = "Event information push notification(option)".localized
-        static let duplicateCheck: String = "Duplicate Check".localized
-        static let signUp: String = "Sign Up".localized
-    }
+    static let firstNoti = "isFirstLogin"
 }
 
 struct BaseURL {
