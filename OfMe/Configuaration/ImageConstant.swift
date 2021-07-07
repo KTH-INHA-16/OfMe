@@ -25,6 +25,11 @@ struct ImgName {
         case play = "play"
         case pause = "pause"
         case info = "info"
+        case defaultImg = "default"
+        case backgroundStop = "homeBackground_1"
+        case defaultStop = "default_stop_1"
+        case background = "homeBackground"
+        case bubbleRight = "bubble_right"
     }
     
     static func imgName(of imgType: imgNameType) -> String {

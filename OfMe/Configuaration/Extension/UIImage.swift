@@ -20,4 +20,27 @@ extension UIImage {
 
         return newImage
     }
+    
+    func resizeImage() -> UIImage {
+        let bound = UIScreen.main.bounds
+        let newHeight = (bound.width / bound.height) * self.size.height
+        let newWidth = (bound.height / bound.width) * self.size.width
+        let newSize = CGSize(width: newWidth, height: newHeight)
+        let renderer = UIGraphicsImageRenderer(size: newSize)
+
+        return renderer.image { _ in
+            self.draw(in: CGRect(origin: .zero, size: newSize))
+        }
+    }
+    
+    func resizeImage(width: CGFloat, height: CGFloat) -> UIImage {
+        let newHeight = height * self.size.height
+        let newWidth = width * self.size.width
+        let newSize = CGSize(width: newWidth, height: newHeight)
+        let renderer = UIGraphicsImageRenderer(size: newSize)
+
+        return renderer.image { _ in
+            self.draw(in: CGRect(origin: .zero, size: newSize))
+        }
+    }
 }

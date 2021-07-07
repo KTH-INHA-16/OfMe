@@ -6,8 +6,15 @@ class HomeCustom: NSObject {
     weak var timeLabel: UILabel?
     weak var timeButton: UIButton?
     
+    lazy var charactorImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: ImgName.imgName(of: .defaultImg))
+        return imageView
+    }()
+    
     lazy var changeButton: UIButton = {
         let button = UIButton()
+        button.contentMode = .scaleAspectFit
         button.setImage(UIImage(named: ImgName.imgName(of: .moon)), for: .normal)
         return button
     }()
@@ -65,13 +72,13 @@ class HomeCustom: NSObject {
     func setConstraint(view: UIView) {
         view.addSubview(changeButton)
         changeButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(30)
+            make.top.equalToSuperview().inset(50)
             make.left.equalToSuperview().inset(30)
         }
         
         view.addSubview(infoButton)
         infoButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(40)
+            make.top.equalToSuperview().inset(60)
             make.right.equalToSuperview().inset(50)
         }
         
@@ -81,6 +88,13 @@ class HomeCustom: NSObject {
             make.left.right.equalToSuperview().inset(30)
             make.height.equalTo(90)
         }
+        
+        view.addSubview(charactorImageView)
+        charactorImageView.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().inset(80)
+            make.centerX.equalToSuperview()
+        }
+        
     }
     
     func setButton(_ button: UIButton , isPlay: Bool) {
