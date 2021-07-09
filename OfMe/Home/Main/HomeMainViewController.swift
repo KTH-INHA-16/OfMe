@@ -41,6 +41,7 @@ class HomeMainViewController: BaseViewController {
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         }
+        customView.infoButton.addTarget(self, action: #selector(infoTouchDown(_:)), for: .touchDown)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -137,6 +138,11 @@ class HomeMainViewController: BaseViewController {
         }
         isPlay = !isPlay
         customView.setButton(customView.timeButton!, isPlay: isPlay)
+    }
+    
+    @objc func infoTouchDown(_ sender: UIButton) {
+        let vc = HomeInfoViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func middleTouchDown(_ sender: UIButton) {

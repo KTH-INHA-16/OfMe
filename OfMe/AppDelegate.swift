@@ -1,9 +1,4 @@
-//
-//  AppDelegate.swift
-//  OfMe
-//
-//  Created by 김태훈 on 2021/06/28.
-//
+
 
 import UIKit
 

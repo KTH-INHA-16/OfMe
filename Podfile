@@ -11,5 +11,6 @@ target 'OfMe' do
   pod 'Kingfisher'
   pod 'SnapKit'
   pod 'FSCalendar'
+  pod 'NVActivityIndicatorView'
 
 end

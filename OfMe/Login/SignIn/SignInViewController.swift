@@ -1,7 +1,8 @@
 import UIKit
 
-class SignInViewController: UIViewController {
+class SignInViewController: LoginBaseViewController {
     private var info: SignInfo = SignInfo()
+    private var dataManager: SignInDataManager = SignInDataManager()
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var emailTextField: UITextField!
@@ -18,19 +19,30 @@ class SignInViewController: UIViewController {
         super.viewDidLoad()
         let touch = UITapGestureRecognizer(target: self, action: #selector(singleTapGestureCaptured(gesture:)))
         scrollView.addGestureRecognizer(touch)
-        setUI()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
+        setUP()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
         self.scrollView.endEditing(true)
         setTextField()
+    }
+    
+    @IBAction func signInTouchDown(_ sender: Any) {
+        startRotating()
+        if !info.check {
+            self.presentAlert(title: "약관에 동의하여 주시기 바랍니다.")
+        } else {
+            if info.passwordCheck {
+                dataManager.postSignRequest(vc: self, info: info) { result in
+                    self.endRotating()
+                    self.setResult(result: result)
+                }
+            } else {
+                passwordWarningLabel.text = "비밀번호가 일치하지 않습니다."
+            }
+        }
+        endRotating()
     }
     
     @IBAction func agreeTouchDown(_ sender: Any) {
@@ -42,9 +54,41 @@ class SignInViewController: UIViewController {
         info.check = !info.check
     }
     
-    func setUI() {
-        setCustomBackButton()
-        setNaviagtionBar()
+    func setResult(result: SignInResponse) {
+        switch result.code {
+        case 1000:
+            self.navigationController?.popViewController(animated: true)
+        default:
+            [emailTextField, passwordTextField, passwordCheckTextField, nickNameTextField].forEach {
+                $0?.addRightTrue()
+            }
+            [nicknameWarningLabel, passwordWarningLabel, emailWarningLabel].forEach {
+                $0.text = ""
+            }
+            switch dataManager.resultTag[result.code] {
+            case 0:
+                emailWarningLabel.text = dataManager.resultText[result.code]
+            case 1:
+                passwordWarningLabel.text = dataManager.resultText[result.code]
+            default:
+                nicknameWarningLabel.text = dataManager.resultText[result.code]
+            }
+            
+            switch dataManager.textFieldTag[result.code]{
+            case 0:
+                emailTextField.addRightFalse()
+            case 1:
+                passwordTextField.addRightFalse()
+            case 2:
+                passwordCheckTextField.addRightFalse()
+            default:
+                nickNameTextField.addRightFalse()
+            }
+        }
+    }
+    
+    func setUP() {
+        self.navigationItem.title = "회원가입"
         [emailWarningLabel, passwordWarningLabel, nicknameWarningLabel].forEach {
             $0?.font = .Notos(.regular, size: 11)
         }
@@ -55,24 +99,6 @@ class SignInViewController: UIViewController {
             $0?.delegate = self
         }
         submitButton.setGradient(color1: .gradientLeft, color2: .gradientRight)
-    }
-    
-    func setNaviagtionBar() {
-        self.navigationController?.navigationBar.barTintColor = self.view.backgroundColor
-        self.navigationItem.title = "회원가입"
-        self.navigationController?.navigationBar.titleTextAttributes = [
-            .font : UIFont.Notos(.bold, size: 14)
-        ]
-    }
-    
-    func setCustomBackButton() {
-        let backImage = UIImage(named: ImgName.imgName(of: .chevronLeft))
-        self.navigationController?.navigationBar.backIndicatorImage = backImage?.withRenderingMode(.alwaysOriginal)
-        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage =
-            backImage?.withRenderingMode(.alwaysOriginal)
-        let backButton = UIBarButtonItem()
-        backButton.title = " "
-        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
     
     func setTextField() {
@@ -140,6 +166,26 @@ extension SignInViewController: UITextFieldDelegate {
             passwordWarningLabel.text = ""
             passwordCheckTextField.rightView = nil
         }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else {return false}
+        
+        var maxLength: Int = 0
+        switch textField.tag {
+        case 0:
+            maxLength = 50
+        case 3:
+            maxLength = 10
+        default:
+            maxLength = 20
+        }
+        
+        if text.count >= maxLength && range.length == 0 && range.location < maxLength {
+            return false
+        }
+        
+        return true
     }
     
     func addRightFalse() -> UIView {
