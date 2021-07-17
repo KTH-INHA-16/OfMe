@@ -46,11 +46,12 @@ class PreviewAdapter: NSObject {
         titleDescriptionLabel.font = .Notos(.regular, size: 12)
         titleDescriptionLabel.textColor = .gray2
         titleDescriptionLabel.numberOfLines = 0
-        titleDescriptionLabel.text = "아래 테스트를 시작하고 나다움을 찾기 위한 여정을 오늘의 친구와 함께해보세요"
+        titleDescriptionLabel.textAlignment = .center
+        titleDescriptionLabel.text = "아래 테스트를 통해 추천받은 오늘의 친구를 만나면\n나를 조금 더 쉽고 재미있게 알아갈 수 있어요"
         view.addSubview(titleDescriptionLabel)
         titleDescriptionLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(115)
-            make.left.right.equalToSuperview().inset(80)
+            make.left.right.equalToSuperview().inset(50)
         }
         
         let borderView = UIView()
@@ -64,7 +65,7 @@ class PreviewAdapter: NSObject {
         }
         
         let stepLabel1 = UILabel()
-        stepLabel1.attributedText = makeAttributedText(text: "Step 01")
+        stepLabel1.attributedText = makeAttributedText(text: "나는 어떤 성향인지 궁금하다면?")
         view.addSubview(stepLabel1)
         stepLabel1.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(190)
@@ -72,7 +73,7 @@ class PreviewAdapter: NSObject {
         }
         
         let stepLabel2 = UILabel()
-        stepLabel2.attributedText = makeAttributedText(text: "Step 02")
+        stepLabel2.attributedText = makeAttributedText(text: "나와 함께할 친구가 궁금하다면?")
         view.addSubview(stepLabel2)
         stepLabel2.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(293)

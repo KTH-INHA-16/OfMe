@@ -2,11 +2,13 @@ import UIKit
 
 class ConceptFirstAdapter: NSObject {
     private var idx: Int = -1
+    private var data: [TestConceptFirst] = []
     private weak var collectionView : UICollectionView!
     private var selected: ((_ at: Int) -> Void)?
     
-    init(of collectionView: UICollectionView, selected: @escaping (_ at: Int) -> Void) {
+    init(of collectionView: UICollectionView, data: [TestConceptFirst], selected: @escaping (_ at: Int) -> Void) {
         super.init()
+        self.data = data
         self.collectionView = collectionView
         self.selected = selected
         self.collectionView.register(
@@ -27,14 +29,14 @@ class ConceptFirstAdapter: NSObject {
 
 extension ConceptFirstAdapter: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return data.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: ConceptTestCollectionViewCell.identifier,
                 for: indexPath) as? ConceptTestCollectionViewCell else { return UICollectionViewCell() }
-        cell.updateUI(idx: idx, row: indexPath.row, title: "활동가")
+        cell.updateUI(idx: idx, row: indexPath.row, title: data[indexPath.row].keyword)
         return cell
     }
     

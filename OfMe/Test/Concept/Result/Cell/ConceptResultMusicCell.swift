@@ -41,5 +41,18 @@ class ConceptResultMusicCell: UICollectionViewCell {
             idx += 1
         }
     }
+    
+    func updateUI(result: ConceptResult) {
+        titleLabel.makeHightledText(
+            all: data.titles[4],
+            for: data.titleHightLightText[4],
+            font: .Notos(.regular, size: 18))
+        let list = result.music.components(separatedBy: ",")
+        musicTitleFirstLabel.text = list[0].components(separatedBy: "-")[0]
+        musicianFirstLabel.text = list[0].components(separatedBy: "-")[1]
+        musicTitleSecondLabel.text = list[1].components(separatedBy: "-")[0]
+        musicianSecondLabel.text = list[1].components(separatedBy: "-")[1]
+        
+    }
 
 }

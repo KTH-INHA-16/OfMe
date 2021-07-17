@@ -1,8 +1,9 @@
 import UIKit
 
 class TestCategoryViewController: BaseViewController {
+    private var dataManager: TestMyCategoryDataManager = TestMyCategoryDataManager()
     private var adapter: CategoryAdapter?
-    private var selectedIdx: Int = -1
+    private var result: TestMyCategory? = nil
     private lazy var nextButton: UIButton = {
         let button = UIButton()
         button.setAttributedTitle(
@@ -26,12 +27,14 @@ class TestCategoryViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        adapter = CategoryAdapter(of: collectionView) { index in
-            self.selectedIdx = index
-            if index != -1 {
-                self.setNextButton()
-            } else {
-                self.removeNextButton()
+        dataManager.getCategory { result in
+            self.adapter = CategoryAdapter(of: self.collectionView, data: result.result) { result in
+                self.result = result
+                if result != nil {
+                    self.setNextButton()
+                } else {
+                    self.removeNextButton()
+                }
             }
         }
     }
@@ -59,8 +62,10 @@ class TestCategoryViewController: BaseViewController {
     }
     
     @objc func resultTouchDown(_ sender: UIButton) {
-        let vc = TestResultViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        if let idx = result?.id {
+            let vc = TestResultViewController(idx: idx)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 
 }

@@ -12,5 +12,9 @@ target 'OfMe' do
   pod 'SnapKit'
   pod 'FSCalendar'
   pod 'NVActivityIndicatorView'
+  pod 'ImagePicker'
+
+
+
 
 end

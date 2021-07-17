@@ -28,7 +28,6 @@ class LoginDataManager: LoginDelegate {
             AF.request(url, method: .post, parameters: parameter, encoding: JSONEncoding.default, headers: nil)
                 .validate()
                 .responseDecodable(of: LoginResponse.self) { response in
-                    print(response.request)
                     switch response.result {
                     case .success(let result):
                         completion(result)

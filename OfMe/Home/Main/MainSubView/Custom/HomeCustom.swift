@@ -5,6 +5,7 @@ class HomeCustom: NSObject {
     private let buttonTitle: [String] = ["다시시작 ", "쉬어가기 "]
     weak var timeLabel: UILabel?
     weak var timeButton: UIButton?
+    weak var titleLabel: UILabel?
     
     lazy var charactorImageView: UIImageView = {
         let imageView = UIImageView()
@@ -26,7 +27,7 @@ class HomeCustom: NSObject {
         let titleLabel = UILabel()
         titleLabel.font = .Notos(.regular, size: 12)
         titleLabel.textColor = .label
-        titleLabel.text = "헤이든과 모스가 함께한지"
+        self.titleLabel = titleLabel
         view.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(16)
@@ -37,7 +38,7 @@ class HomeCustom: NSObject {
         self.timeLabel = timeLabel
         timeLabel.textColor = .mainBlue
         timeLabel.font = .Notos(.black, size: 22)
-        timeLabel.text = "1분"
+        timeLabel.text = ""
         view.addSubview(timeLabel)
         timeLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(40)

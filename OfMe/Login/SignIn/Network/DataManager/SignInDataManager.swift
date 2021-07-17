@@ -65,7 +65,6 @@ class SignInDataManager: SignInProtocol {
             AF.request(url, method: .post, parameters: paramter, encoding: JSONEncoding.default, headers: nil)
                 .validate()
                 .responseDecodable(of: SignInResponse.self) { response in
-                    print(response.request)
                     switch response.result {
                     case .success(let result):
                         completion(result)

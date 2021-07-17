@@ -1,6 +1,8 @@
 import UIKit
+import Kingfisher
 
 class TestConceptResultViewController: BaseViewController {
+    private let dataManager = ConceptResultDataManager()
     private var circularProgressBar: CircularProgressBar?
     private var data: ConceptDummy = ConceptDummy()
     private var adapter: ConceptResultAdapter?
@@ -15,8 +17,13 @@ class TestConceptResultViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUP()
-        adapter = ConceptResultAdapter(of: collectionView, sub: charactorPageControl)
+        dataManager.registerConcept()
+        dataManager.getConceptResult { result in
+            if result.count != 0 {
+                self.setUP(result: result[0])
+                self.adapter = ConceptResultAdapter(of: self.collectionView, sub: self.charactorPageControl, data: result[0])
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,25 +48,29 @@ class TestConceptResultViewController: BaseViewController {
         }
     }
     
-    func setUP() {
-        charactorLabel.text = data.charactorText
+    func setUP(result: ConceptResult) {
+        if let url = URL(string: result.conceptImg) {
+            charactorImageView.kf.setImage(with: url)
+        }
+        
+        charactorLabel.text = result.name
         charactorLabel.font = .Notos(.bold, size: 22)
         charactorLabel.textColor = .mainBlue
         
-        let attirbutedText = NSMutableAttributedString(string: data.titleText)
+        let attirbutedText = NSMutableAttributedString(string: result.subName)
         attirbutedText.addAttributes([
             .font : UIFont.Notos(.regular, size: 12),
             .foregroundColor : UIColor.gray2
-        ], range: (data.titleText as NSString).range(of: data.titleText))
+        ], range: (result.subName as NSString).range(of: result.subName))
         attirbutedText.addAttribute(.underlineStyle, value: NSUnderlineStyle.thick.rawValue,
-                                    range: (data.titleText as NSString).range(of: data.titleText))
+                                    range: (result.subName as NSString).range(of: result.subName))
         attirbutedText.addAttribute(.underlineColor, value: UIColor.gray2,
-                                    range: (data.titleText as NSString).range(of: data.titleText))
+                                    range: (result.subName as NSString).range(of: result.subName))
         titleLabel.attributedText = attirbutedText
         
         descriptLabel.font = .Notos(.bold, size: 12)
         descriptLabel.textColor = .gray2
-        descriptLabel.text = data.charactorDescriptText
+        descriptLabel.text = result.description
         
         charactorPageControl.numberOfPages = 5
         charactorPageControl.currentPage = 0

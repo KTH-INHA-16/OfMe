@@ -1,9 +1,11 @@
 import UIKit
 
 class TestConceptDetailFirstViewController: BaseViewController {
+    private var dataManager: TestConceptFirstDataManager = TestConceptFirstDataManager()
     private var circularProgressBar: CircularProgressBar?
     private var adapter: ConceptFirstAdapter?
     private var menu: ConceptFirstMenu?
+    private var data: [TestConceptFirst] = []
     private var index: Int = -1
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -12,13 +14,16 @@ class TestConceptDetailFirstViewController: BaseViewController {
         super.viewDidLoad()
         menu = ConceptFirstMenu()
         menu?.nextButton.addTarget(self, action: #selector(nextTouchDown(_:)), for: .touchDown)
-        adapter = ConceptFirstAdapter(of: collectionView) { idx in
-            self.index = idx
-            switch idx {
-            case -1:
-                self.menu?.nextButton.removeFromSuperview()
-            default:
-                self.menu?.setButton(view: self.view)
+        dataManager.getTest { result in
+            self.data = result
+            self.adapter = ConceptFirstAdapter(of: self.collectionView, data: result) { idx in
+                self.index = idx
+                switch idx {
+                case -1:
+                    self.menu?.nextButton.removeFromSuperview()
+                default:
+                    self.menu?.setButton(view: self.view)
+                }
             }
         }
     }
@@ -34,7 +39,7 @@ class TestConceptDetailFirstViewController: BaseViewController {
     }
     
     @objc func nextTouchDown(_ sender: UIButton) {
-        let vc = TestConceptSecondViewController(firstIdx: index)
+        let vc = TestConceptSecondViewController(firstIdx: data[index].id)
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

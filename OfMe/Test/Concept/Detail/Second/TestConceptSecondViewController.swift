@@ -2,6 +2,8 @@ import UIKit
 
 class TestConceptSecondViewController: BaseViewController {
     static let identifier = "TestConceptSecondViewController"
+    private let dataManager: TestConceptSecondDataManager = TestConceptSecondDataManager()
+    private var data: TestConceptSecond?
     private var secondIdx: Int = -1
     private var firstIdx: Int = 0
     private var circularProgressBar: CircularProgressBar?
@@ -25,15 +27,17 @@ class TestConceptSecondViewController: BaseViewController {
         menu = ConceptFirstMenu()
         menu?.nextButton.setTitle("다음", for: .normal)
         menu?.nextButton.addTarget(self, action: #selector(nextTouchDown(_:)), for: .touchDown)
-        
-        adapter = ConceptSecondAdapter(of: collectionView) { idx in
-            switch idx {
-            case -1:
-                self.menu?.nextButton.removeFromSuperview()
-                self.secondIdx = -1
-            default:
-                self.menu?.setButton(view: self.view)
-                self.secondIdx = idx - 1
+        dataManager.getTest(idx: firstIdx) { result in
+            self.data = result
+            self.adapter = ConceptSecondAdapter(of: self.collectionView, data: result) { idx in
+                switch idx {
+                case -1:
+                    self.menu?.nextButton.removeFromSuperview()
+                    self.secondIdx = -1
+                default:
+                    self.menu?.setButton(view: self.view)
+                    self.secondIdx = idx - 1
+                }
             }
         }
     }

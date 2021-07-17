@@ -1,11 +1,13 @@
 import UIKit
 
 class ConceptResultAdapter: NSObject {
+    private var data: ConceptResult = ConceptResult(id: 0, name: "", conceptImg: "", subName: "", description: "", advantage: "", habit: "", behavior: "", value: "", music: "")
     private weak var collectionView: UICollectionView!
     private weak var pageControl: UIPageControl!
     
-    init(of collectionView: UICollectionView, sub pageControl: UIPageControl) {
+    init(of collectionView: UICollectionView, sub pageControl: UIPageControl, data: ConceptResult) {
         super.init()
+        self.data = data
         self.pageControl = pageControl
         self.pageControl.isUserInteractionEnabled = false
         self.collectionView = collectionView
@@ -38,14 +40,14 @@ extension ConceptResultAdapter: UICollectionViewDataSource {
                     withReuseIdentifier: ConceptResultTextCell.identifier, for: indexPath) as? ConceptResultTextCell else {
                 return UICollectionViewCell()
             }
-            cell.updateUI(idx: indexPath.row)
+            cell.update(idx: indexPath.row, result: data)
             return cell
         } else {
             guard let cell = collectionView.dequeueReusableCell(
                     withReuseIdentifier: ConceptResultMusicCell.identifier, for: indexPath) as? ConceptResultMusicCell else {
                 return UICollectionViewCell()
             }
-            cell.updateUI()
+            cell.updateUI(result: data)
             return cell
         }
     }

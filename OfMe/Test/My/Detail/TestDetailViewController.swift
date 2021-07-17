@@ -1,14 +1,14 @@
 import UIKit
 
 class TestDetailViewController: BaseViewController {
+    private var dataManager: TestMyDetailDataManager = TestMyDetailDataManager()
     private var step: Int = 1
     private var circularProgressBar: CircularProgressBar?
     internal let identifier = "TestDetailViewController"
     private var answer: [Int] = []
+    private var answerSheet: [String] = []
     private var highLightText: [String] = DummyData.highlightedSheet
-    private var question: [String] = DummyData.descriptSheet
-    private var answer1: [String] = DummyData.answerSheet1
-    private var answer2: [String] = DummyData.answerSheet2
+    private var data: [TestMyDetail] = []
     
     @IBOutlet weak var stepLabel: UILabel!
     @IBOutlet weak var descriptLabel: UILabel!
@@ -29,10 +29,13 @@ class TestDetailViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         circularProgressBar = self.tabBarController?.circularProgressBar(duration: 0.6, progress: CGFloat(step)/12)
-        self.view.addSubview(circularProgressBar!)
-        
         setUP()
-        setQuestion(step: Int(step))
+        self.view.addSubview(circularProgressBar!)
+        dataManager.getQuestion { result in
+            print(self.step)
+            self.data = result
+            self.setQuestion(step: Int(self.step))
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,17 +47,19 @@ class TestDetailViewController: BaseViewController {
     }
     
     @IBAction func firstTouchDown(_ sender: Any) {
+        answerSheet[step-1] = data[step-1].sort
         answer[step-1] = 0
-        setSelected(button: answerFirstButton, text: answer1[step-1])
-        setUnselected(button: answerSecondButton, text: answer2[step-1])
+        setSelected(button: answerFirstButton, text: data[step-1].ENTPanswer)
+        setUnselected(button: answerSecondButton, text: data[step-1].ISFJanswer)
         nextButton.isUserInteractionEnabled = true
         nextButton.alpha = 1
     }
     
     @IBAction func secondTouchDown(_ sender: Any) {
+        answerSheet[step-1] = data[step-1].sort
         answer[step-1] = 1
-        setSelected(button: answerSecondButton, text: answer2[step-1])
-        setUnselected(button: answerFirstButton, text: answer1[step-1])
+        setSelected(button: answerSecondButton, text: data[step-1].ISFJanswer)
+        setUnselected(button: answerFirstButton, text: data[step-1].ENTPanswer)
         nextButton.isUserInteractionEnabled = true
         nextButton.alpha = 1
     }
@@ -67,7 +72,7 @@ class TestDetailViewController: BaseViewController {
             circularProgressBar = self.tabBarController?.circularProgressBar(duration: 0.6, progress: CGFloat(step)/12+0.1)
             self.view.addSubview(circularProgressBar!)
         } else {
-            let vc = TestResultViewController()
+            let vc = TestResultViewController(answer: answer, answerSheet: answerSheet)
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -85,6 +90,7 @@ class TestDetailViewController: BaseViewController {
     
     func setUP() {
         answer = [Int].init(repeating: -1, count: 12)
+        answerSheet = [String].init(repeating: "", count: 12)
         stepLabel.font = .Notos(.regular, size: 10)
         stepLabel.textColor = .gray3
         stepLabel.backgroundColor = .white
@@ -98,24 +104,24 @@ class TestDetailViewController: BaseViewController {
         print(answer[step-1])
         print(step)
         [answerFirstButton, answerSecondButton].forEach { $0?.setTitle(nil, for: .normal) }
-        descriptLabel.makeHightledText(all: question[step-1], for: highLightText[step-1])
+        descriptLabel.makeHightledText(all: data[step-1].question, for: data[step-1].highlight)
         stepLabel.text = "\(step) / 12"
         if answer[step-1] != -1 {
             switch answer[step-1] {
             case 0:
-                setSelected(button: answerFirstButton, text: answer1[step-1])
-                setUnselected(button: answerSecondButton, text: answer2[step-1])
+                setSelected(button: answerFirstButton, text: data[step-1].ENTPanswer)
+                setUnselected(button: answerSecondButton, text: data[step-1].ISFJanswer)
             default:
-                setSelected(button: answerSecondButton, text: answer2[step-1])
-                setUnselected(button: answerFirstButton, text: answer1[step-1])
+                setSelected(button: answerSecondButton, text: data[step-1].ISFJanswer)
+                setUnselected(button: answerFirstButton, text: data[step-1].ENTPanswer)
             }
             nextButton.isUserInteractionEnabled = true
             nextButton.alpha = 1
         } else {
             nextButton.alpha = 0.4
             nextButton.isUserInteractionEnabled = false
-            setUnselected(button: answerFirstButton, text: answer1[step-1])
-            setUnselected(button: answerSecondButton, text: answer2[step-1])
+            setUnselected(button: answerFirstButton, text: data[step-1].ENTPanswer)
+            setUnselected(button: answerSecondButton, text: data[step-1].ISFJanswer)
         }
         if step == 1 {
             prevButton.isUserInteractionEnabled = false

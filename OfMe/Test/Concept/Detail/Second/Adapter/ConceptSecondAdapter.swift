@@ -1,12 +1,14 @@
 import UIKit
 
 class ConceptSecondAdapter: NSObject {
+    private var data: TestConceptSecond?
     private var idx: Int = -1
     private weak var collectionView : UICollectionView!
     private var selected: ((_ at: Int) -> Void)?
     
-    init(of collectionView: UICollectionView, selected: @escaping (_ at: Int) -> Void) {
+    init(of collectionView: UICollectionView, data: TestConceptSecond, selected: @escaping (_ at: Int) -> Void) {
         super.init()
+        self.data = data
         self.collectionView = collectionView
         self.selected = selected
         self.collectionView.register(
@@ -40,13 +42,17 @@ extension ConceptSecondAdapter: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(
                     withReuseIdentifier: TestConceptDescriptCollectionViewCell.identifier,
                     for: indexPath) as? TestConceptDescriptCollectionViewCell else { return UICollectionViewCell() }
-            cell.updateUI(text: DummyData.conceptTitleString, word: DummyData.conceptTitleHLString)
+            if let data = data {
+                cell.updateUI(text: data.question, word: data.highlight)
+            }
             return cell
         default:
             guard let cell = collectionView.dequeueReusableCell(
                     withReuseIdentifier: ConceptTestCollectionViewCell.identifier,
                     for: indexPath) as? ConceptTestCollectionViewCell else { return UICollectionViewCell() }
-            cell.updateUI(idx: idx, row: indexPath.row, title: "아랑곳하지 않고 마저 웃는다")
+            if let data = data {
+                cell.updateUI(idx: idx, row: indexPath.row, data: data)
+            }
             return cell
         }
     }
@@ -65,11 +71,13 @@ extension ConceptSecondAdapter: UICollectionViewDataSource {
 
 extension ConceptSecondAdapter: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let selected = selected else { return }
-        if idx != 0 {
-            if idx != indexPath.row { idx = indexPath.row } else { idx = -1 }
-            collectionView.reloadData()
-            selected(idx)
+        if indexPath.row > 0 {
+            guard let selected = selected else { return }
+            if idx != 0 {
+                if idx != indexPath.row { idx = indexPath.row } else { idx = -1 }
+                collectionView.reloadData()
+                selected(idx)
+            }
         }
     }
     

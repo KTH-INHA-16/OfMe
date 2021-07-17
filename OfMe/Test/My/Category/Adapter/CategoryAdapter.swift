@@ -2,11 +2,13 @@ import UIKit
 
 class CategoryAdapter: NSObject {
     private weak var collectionView: UICollectionView!
+    private var data: [TestMyCategory] = []
     private var idx: Int = -1
-    private var selected: ((_ at: Int) -> Void)?
+    private var selected: ((_ at: TestMyCategory?) -> Void)?
     
-    init(of collectionView: UICollectionView, selected: @escaping (_ at: Int) -> Void) {
+    init(of collectionView: UICollectionView, data: [TestMyCategory] ,selected: @escaping (_ at: TestMyCategory?) -> Void) {
         super.init()
+        self.data = data
         self.collectionView = collectionView
         self.collectionView.register(
             UINib(nibName: CategoryCollectionViewCell.identifier, bundle: nil),
@@ -24,14 +26,14 @@ class CategoryAdapter: NSObject {
 
 extension CategoryAdapter: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 15
+        return data.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: CategoryCollectionViewCell.identifier,
                 for: indexPath) as? CategoryCollectionViewCell else { return UICollectionViewCell() }
-        cell.updateUI(index: idx, row: indexPath.row)
+        cell.updateUI(data: data[indexPath.row], index: idx, row: indexPath.row)
         return cell
     }
     
@@ -43,11 +45,11 @@ extension CategoryAdapter: UICollectionViewDelegate, UICollectionViewDelegateFlo
         if idx != indexPath.row {
             idx = indexPath.row
             collectionView.reloadData()
-            selected(idx)
+            selected(data[indexPath.row])
         } else {
             idx = -1
             collectionView.reloadData()
-            selected(idx)
+            selected(nil)
         }
     }
     

@@ -3,13 +3,13 @@ import UIKit
 class CustomTabBarViewController: UITabBarController, UITabBarControllerDelegate {
     
     let homeVC = HomeMainViewController()
-    let questionVC = QuestionMainViewController()
+    let questionVC = QuestionViewController()
     let archiveVC = ArchiveMainViewController()
     let myinfoVC = MyInfoMainViewController()
     
     let homeTabBarItem = UITabBarItem(title: "홈", image: UIImage(named: ImgName.imgName(of: .homeIcon)), tag: 0)
-    let questionTabBarItem = UITabBarItem(title: "기록", image: UIImage(named: ImgName.imgName(of: .archiveIcon)), tag: 1)
-    let archiveTabBarItem = UITabBarItem(title: "Q&A", image: UIImage(named: ImgName.imgName(of: .questionIcon)), tag: 2)
+    let questionTabBarItem = UITabBarItem(title: "Q&A", image: UIImage(named: ImgName.imgName(of: .questionIcon)), tag: 2)
+    let archiveTabBarItem = UITabBarItem(title: "기록", image: UIImage(named: ImgName.imgName(of: .archiveIcon)), tag: 1)
     let myinfoTabBarItem = UITabBarItem(title: "마이", image: UIImage(named: ImgName.imgName(of: .myInfoIcon)), tag: 3)
 
     override func viewDidLoad() {
@@ -36,8 +36,8 @@ class CustomTabBarViewController: UITabBarController, UITabBarControllerDelegate
         
         self.viewControllers = [
             homeNavVC,
-            questionNavVC,
             archiveNavVC,
+            questionNavVC,
             myinfoNavVC
         ]
         
@@ -49,11 +49,6 @@ class CustomTabBarViewController: UITabBarController, UITabBarControllerDelegate
         tabBar.items?[1].titlePositionAdjustment.horizontal = -15
         tabBar.items?[2].titlePositionAdjustment.horizontal = 15
         tabBar.items?[3].titlePositionAdjustment.horizontal = -15
-    }
-
-    // Menu Button Touch Action
-    @objc func menuButtonAction(sender: UIButton) {
-        self.selectedIndex = 2   //to select the middle tab. use "1" if you have only 3 tabs.
     }
 
 }

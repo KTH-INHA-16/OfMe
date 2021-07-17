@@ -10,9 +10,12 @@ extension FSCalendar {
 //    }
     
     func setColor() {
-        self.appearance.eventSelectionColor = .clear
-        self.appearance.selectionColor = .clear
         self.appearance.todayColor = .clear
+    }
+    
+    func defaultWeekDay() {
+        self.locale = Locale(identifier: "ko_KR")
+        self.appearance.weekdayFont = .Notos(.regular, size: 13)
     }
     
     func setApperance() {

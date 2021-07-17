@@ -1,7 +1,9 @@
 import UIKit
 
 class HomeInfoViewController: BaseViewController {
+    private var dataManager = ConceptResultDataManager()
     private var adapter: ConceptResultAdapter?
+    private var idx: Int = 0
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var mainLabel: UILabel!
@@ -10,10 +12,27 @@ class HomeInfoViewController: BaseViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
     
+    init(idx: Int) {
+        super.init(nibName: "HomeInfoViewController", bundle: Bundle.main)
+        self.idx = idx
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUP()
-        adapter = ConceptResultAdapter(of: collectionView, sub: pageControl)
+        dataManager.getConceptResult(idx: idx) { result in
+            print(result)
+            if !result.isEmpty {
+                self.adapter = ConceptResultAdapter(of: self.collectionView, sub: self.pageControl, data: result[0])
+                self.titleLabel.text = result[0].name
+                self.mainLabel.text = result[0].subName
+                self.subLabel.text = result[0].description
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

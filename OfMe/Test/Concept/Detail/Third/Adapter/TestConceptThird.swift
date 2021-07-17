@@ -1,12 +1,14 @@
 import UIKit
 
 class TestConceptThird: NSObject {
+    private var data: TestDummy?
     private var idx: Int = -1
     private weak var collectionView : UICollectionView!
     private var selected: ((_ at: Int) -> Void)?
     
-    init(of collectionView: UICollectionView, selected: @escaping (_ at: Int) -> Void) {
+    init(of collectionView: UICollectionView, data: TestDummy, selected: @escaping (_ at: Int) -> Void) {
         super.init()
+        self.data = data
         self.collectionView = collectionView
         self.selected = selected
         self.collectionView.register(
@@ -46,7 +48,9 @@ extension TestConceptThird: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(
                     withReuseIdentifier: ConceptTestCollectionViewCell.identifier,
                     for: indexPath) as? ConceptTestCollectionViewCell else { return UICollectionViewCell() }
-            cell.updateUI(idx: idx, row: indexPath.row, title: "카운슬러")
+            if let data = data {
+                cell.updateUI(idx: idx, row: indexPath.row, data: data)
+            }
             return cell
         }
     }
@@ -65,11 +69,13 @@ extension TestConceptThird: UICollectionViewDataSource {
 
 extension TestConceptThird: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let selected = selected else { return }
-        if idx != 0 {
-            if idx != indexPath.row { idx = indexPath.row } else { idx = -1 }
-            collectionView.reloadData()
-            selected(idx)
+        if indexPath.row > 0 {
+            guard let selected = selected else { return }
+            if idx != 0 {
+                if idx != indexPath.row { idx = indexPath.row } else { idx = -1 }
+                collectionView.reloadData()
+                selected(idx)
+            }
         }
     }
     

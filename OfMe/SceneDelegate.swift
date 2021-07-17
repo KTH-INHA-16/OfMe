@@ -10,17 +10,27 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
+    let dataManager: AutoLoginDataManager = AutoLoginDataManager()
 
 
     func scene(_ scene: UIScene,
                willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
-        
-        let mainVC = LoginMainViewController()
-        let navigationController = UINavigationController(rootViewController: mainVC)
+    
         self.window = UIWindow(windowScene: scene as! UIWindowScene)
-        window?.rootViewController = navigationController
-        window?.makeKeyAndVisible()
+        dataManager.autoLogin { result in
+            if result.code == 1000 {
+                UserDefaults.standard.setValue(result.result?.jwt, forKey: "jwt")
+                UserDefaults.standard.setValue(result.result?.userId, forKey: "userID")
+                let mainVC = CustomTabBarViewController()
+                self.window?.rootViewController = mainVC
+            } else {
+                let mainVC = LoginMainViewController()
+                let navigationController = UINavigationController(rootViewController: mainVC)
+                self.window?.rootViewController = navigationController
+            }
+            self.window?.makeKeyAndVisible()
+        }
         
     }
 

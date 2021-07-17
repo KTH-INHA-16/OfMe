@@ -39,5 +39,6 @@ extension UIColor {
     class var mainBlue: UIColor { UIColor(hex: 0x1038BC) }
     class var purple: UIColor { UIColor(hex: 0xF4F5FF) }
     class var mainBlueBlur: UIColor { UIColor(hex: 0x1038BC) }
+    class var gray4: UIColor { UIColor(hex: 0xBDBDBD) }
     
 }

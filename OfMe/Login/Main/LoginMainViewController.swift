@@ -46,12 +46,12 @@ class LoginMainViewController: LoginBaseViewController {
     }
     
     @IBAction func loginButtonTouchDown(_ sender: Any) {
-        self.changeRootViewController(CustomTabBarViewController())
-//        startRotating()
-//        dataManager.postLogin(vc: self, email: email, password: password) { result in
-//            self.endRotating()
-//            self.setResult(result: result)
-//        }
+//        self.changeRootViewController(CustomTabBarViewController())
+        startRotating()
+        dataManager.postLogin(vc: self, email: email, password: password) { result in
+            self.endRotating()
+            self.setResult(result: result)
+        }
     }
     
     @IBAction func signinButtonTouchDown(_ sender: Any) {
