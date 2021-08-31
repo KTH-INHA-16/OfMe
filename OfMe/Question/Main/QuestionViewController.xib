@@ -45,10 +45,10 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hio-8S-oNo">
-                    <rect key="frame" x="0.0" y="86" width="208" height="3"/>
+                    <rect key="frame" x="0.0" y="87.5" width="208" height="1.5"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="3" id="9R5-gm-x9z"/>
+                        <constraint firstAttribute="height" constant="1.5" id="9R5-gm-x9z"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EP5-Vy-Ynz">
@@ -56,10 +56,10 @@
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gAq-p3-6N9">
-                    <rect key="frame" x="206" y="86" width="208" height="3"/>
+                    <rect key="frame" x="206" y="87.5" width="208" height="1.5"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="3" id="nWv-yO-KXX"/>
+                        <constraint firstAttribute="height" constant="1.5" id="nWv-yO-KXX"/>
                     </constraints>
                 </view>
             </subviews>

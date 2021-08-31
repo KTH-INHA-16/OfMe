@@ -13,4 +13,8 @@ class TestConceptDescriptCollectionViewCell: UICollectionViewCell {
     func updateUI(text: String, word: String) {
         titleLabel.makeHightledText(all: text, for: word, font: .Notos(.regular, size: 18))
     }
+    
+    func updateUI() {
+        
+    }
 }

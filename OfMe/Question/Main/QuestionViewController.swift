@@ -16,6 +16,15 @@ class QuestionViewController: BaseViewController {
         setButton()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationItem.title = "Q&A"
+        middleButton = self.tabBarController?.normalMiddleButton()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        middleButton?.removeFromSuperview()
+    }
+    
     @IBAction func allTouchDown(_ sender: Any) {
         idx = 0
         setButton()
@@ -68,8 +77,26 @@ class QuestionViewController: BaseViewController {
             mainVC.view.snp.makeConstraints { make in
                 make.top.left.right.bottom.equalToSuperview()
             }
+            mainVC.dailyButton.addTarget(self, action: #selector(dailyTouchDown), for: .touchDown)
+            mainVC.myButton.addTarget(self, action: #selector(myTouchDown), for: .touchDown)
+            mainVC.todayButton.addTarget(self, action: #selector(todayTouchDown), for: .touchDown)
             self.addChild(mainVC)
             mainVC.didMove(toParent: self)
         }
+    }
+    
+    @objc func dailyTouchDown() {
+        let vc = QuestionAllViewController(title: "일상 이야기",type: "D")
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func myTouchDown() {
+        let vc = QuestionAllViewController(title: "나의 생각",type: "T")
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func todayTouchDown() {
+        let vc = QuestionAllViewController(title: "오늘의 오브미",type: "O")
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -11,8 +11,8 @@ struct CharacterResponse: Codable {
 
 struct CharacterResult: Codable {
     var nickname: String
-    var name: String
-    var id: Int
-    var conceptImg: String
-    var timer: Int
+    var name: String?
+    var id: Int?
+    var url: String?
+    var timer: Int?
 }

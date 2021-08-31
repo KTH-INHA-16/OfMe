@@ -42,7 +42,10 @@ extension TestConceptThird: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(
                     withReuseIdentifier: TestConceptDescriptCollectionViewCell.identifier,
                     for: indexPath) as? TestConceptDescriptCollectionViewCell else { return UICollectionViewCell() }
-            cell.updateUI(text: DummyData.conceptTitleString, word: DummyData.conceptTitleHLString)
+            if let data = data {
+                cell.updateUI(text: data.question, word: data.highlight)
+            }
+            
             return cell
         default:
             guard let cell = collectionView.dequeueReusableCell(
@@ -82,7 +85,7 @@ extension TestConceptThird: UICollectionViewDelegate, UICollectionViewDelegateFl
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 150)
+        return CGSize(width: collectionView.frame.width, height: 120)
     }
     
     func collectionView(_ collectionView: UICollectionView,

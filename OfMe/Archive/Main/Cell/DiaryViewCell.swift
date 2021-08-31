@@ -27,5 +27,12 @@ class DiaryViewCell: UICollectionViewCell {
         contentLabel.font = .Notos(.regular, size: 12)
         contentLabel.textColor = .gray2
     }
+    
+    func updateUI(data: DiaryGet) {
+        timeLabel.text = "\(data.createAt.components(separatedBy: "-")[0]).\(data.createAt.components(separatedBy: "-")[1]).\(data.createAt.components(separatedBy: "-")[2])"
+        titleLabel.text = data.title
+        contentLabel.text = data.content
+        charactorLabel.text = data.name
+    }
 
 }

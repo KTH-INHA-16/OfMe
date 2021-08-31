@@ -16,7 +16,7 @@ class ConceptTestCollectionViewCell: UICollectionViewCell {
         titleLabel.text = title
         
         if idx == row {
-            self.backgroundColor = .mainBlue
+            self.backgroundColor = #colorLiteral(red: 0.2289258242, green: 0.3856725693, blue: 0.8486357331, alpha: 1)
             titleLabel.font = .Notos(.bold, size: 14)
             titleLabel.textColor = .white
         } else {
@@ -38,7 +38,7 @@ class ConceptTestCollectionViewCell: UICollectionViewCell {
         }
         
         if idx == row {
-            self.backgroundColor = .mainBlue
+            self.backgroundColor = #colorLiteral(red: 0.2289258242, green: 0.3856725693, blue: 0.8486357331, alpha: 1)
             titleLabel.font = .Notos(.bold, size: 14)
             titleLabel.textColor = .white
         } else {
@@ -60,7 +60,7 @@ class ConceptTestCollectionViewCell: UICollectionViewCell {
         }
         
         if idx == row {
-            self.backgroundColor = .mainBlue
+            self.backgroundColor = #colorLiteral(red: 0.2289258242, green: 0.3856725693, blue: 0.8486357331, alpha: 1)
             titleLabel.font = .Notos(.bold, size: 14)
             titleLabel.textColor = .white
         } else {

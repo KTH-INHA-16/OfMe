@@ -30,6 +30,7 @@ class LoginDataManager: LoginDelegate {
                 .responseDecodable(of: LoginResponse.self) { response in
                     switch response.result {
                     case .success(let result):
+                        print(result)
                         completion(result)
                     case .failure(let error):
                         print("login Error: \(error.errorDescription ?? "error")")

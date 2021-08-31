@@ -13,6 +13,7 @@ class CircularProgressBar: UIView, CAAnimationDelegate {
         super.init(frame: frame)
         self.rect = frame
         self.progress = progress
+        self.backgroundColor = .white
     }
     
     required init?(coder: NSCoder) {
@@ -49,6 +50,7 @@ class CircularProgressBar: UIView, CAAnimationDelegate {
         circleLayer.lineWidth = 6.0
         circleLayer.strokeEnd = 1.0
         circleLayer.strokeColor = UIColor.white.cgColor
+        circleLayer.backgroundColor = UIColor.white.cgColor
         // added circleLayer to layer
         layer.addSublayer(circleLayer)
         // progressLayer path defined to circularPath
@@ -59,6 +61,7 @@ class CircularProgressBar: UIView, CAAnimationDelegate {
         progressLayer.lineWidth = 3.0
         progressLayer.strokeEnd = 0
         progressLayer.strokeColor = UIColor.black.cgColor
+        
         // added progressLayer to layer
         layer.addSublayer(progressLayer)
         

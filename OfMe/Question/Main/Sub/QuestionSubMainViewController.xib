@@ -131,7 +131,7 @@
                         <size key="itemSize" width="128" height="128"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <inset key="sectionInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
             </subviews>
@@ -154,6 +154,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="OVx-8P-8NX" secondAttribute="trailing" id="l09-7Q-pdF"/>
                 <constraint firstItem="1e7-9b-jQu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="suS-1A-A7f"/>
                 <constraint firstItem="N7H-x6-SNh" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="12" id="tb6-e6-GaM"/>
+                <constraint firstItem="l0H-aD-xfQ" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="xoL-CZ-lsF"/>
             </constraints>
             <point key="canvasLocation" x="34.782608695652179" y="104.46428571428571"/>
         </view>

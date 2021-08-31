@@ -108,7 +108,7 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </textView>
-                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="b5g-0r-sSy">
+                        <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="b5g-0r-sSy">
                             <rect key="frame" x="20" y="479" width="117" height="95"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>

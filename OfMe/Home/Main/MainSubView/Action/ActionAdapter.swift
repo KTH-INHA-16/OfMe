@@ -22,7 +22,7 @@ class ActionAdapter: NSObject {
         
         view.snp.makeConstraints { make in
             make.left.right.bottom.equalToSuperview()
-            make.top.equalToSuperview().inset(160)
+            make.height.equalTo(600)
         }
         
         let cancelButton = UIButton()
@@ -207,7 +207,7 @@ class ActionAdapter: NSObject {
         view.addSubview(applyButton)
         applyButton.snp.makeConstraints { make in
             make.left.right.equalToSuperview().inset(40)
-            make.bottom.equalToSuperview().inset(80)
+            make.top.equalTo(resetButton).inset(50)
             make.height.equalTo(50)
         }
         applyButton.addTarget(self, action: #selector(cancelTouchDown(_:)), for: .touchDown)

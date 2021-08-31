@@ -42,9 +42,10 @@ class TestResultViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationItem.title = "나를 먼저 알기"
+        self.navigationItem.title = "나의 성향 알기"
         circularProgressBar = self.tabBarController?.circularProgressBar(duration: 0.6, progress: 1)
         self.view.addSubview(circularProgressBar!)
+        self.navigationItem.setHidesBackButton(true, animated: false)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

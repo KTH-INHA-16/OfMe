@@ -13,6 +13,7 @@ struct URLString {
     static let getConceptFirst = base + "/concepts/stageOne"
     static let getConceptSecond = base + "/concepts/stageTwo"
     static let getConceptThird = base + "/concepts/stageThree"
+    static let conceptResult = base + "/concepts-two"
     
     static let character = base + "/characters"
     static let characterAction = base + "/characters/actions"
@@ -20,4 +21,33 @@ struct URLString {
     
     static let finishRate = base + "/characters/ratings"
     static let finishEnd = base + "/characters/ends"
+    
+    static let diary = base + "/diarys"
+    
+    static let info = base + "/mypages"
+    
+    static let logout = base + "/logout"
+    
+    static let date = base + "/date"
+    
+    static let question = base + "/questions"
+    
+    static let questionList = base + "/questions/list"
+    
+    static let questionReward = base + "/questions/myrewards"
+    static let questionEvery = base + "/questions/views/everything"
+    static let questionShare = base + "/questions/views/share"
+    static let questionCheck = base + "/questions/views/check"
+    static let questionNoCheck = base + "/questions/views/nocheck"
+    
+    static let declarations = base + "/declarations"
+    
+    static let nickname = base + "/nickname"
+    
+    static let infoDetail = base + "/mypages/details"
+    static let passwordChange = base + "/mypages/passwords"
+    
+    static let mypage = base + "/mypages"
+    
+    static let delete = base + "/users"
 }

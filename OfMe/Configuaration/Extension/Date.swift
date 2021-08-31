@@ -9,6 +9,24 @@ extension Date{
         self = dateFormatter.date(from: "\(year):\(month):\(day)") ?? Date()
     }
     
+    var month: Int {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM"
+        return Int(dateFormatter.string(from: self))!
+    }
+    
+    var year: Int {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy"
+        return Int(dateFormatter.string(from: self))!
+    }
+    
+    var day: Int {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd"
+        return Int(dateFormatter.string(from: self))!
+    }
+    
     var monthText: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM"

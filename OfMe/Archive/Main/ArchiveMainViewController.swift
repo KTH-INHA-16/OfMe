@@ -2,6 +2,7 @@ import UIKit
 import FSCalendar
 
 class ArchiveMainViewController: BaseViewController {
+    private let dataManager = DiaryDataManager()
     private var adapter: ArchiveMainAdapter?
     private var date = Date()
     private var mainPicker: MainPicker = MainPicker()
@@ -30,13 +31,15 @@ class ArchiveMainViewController: BaseViewController {
         calendar.appearance.weekdayFont = .Notos(.regular, size: 13)
         setButtonText()
         self.navigationItem.rightBarButtonItem = rightButton
-        adapter = ArchiveMainAdapter(of: collectionView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationItem.title = "컨셉 기록"
         middleButton = self.tabBarController?.testMiddleButton()
         middleButton?.addTarget(self, action: #selector(writeTouchDown), for: .touchDown)
+        dataManager.getDiary(date: date) { result in
+            self.adapter = ArchiveMainAdapter(of: self.collectionView, data: result, vc: self)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -54,8 +57,12 @@ class ArchiveMainViewController: BaseViewController {
             let month = pickerView.months[pickerView.selectedRow(inComponent: 2)]
             date = Date(year: year, month: Int(month)!, day: 1)
             calendar.reloadData()
+            calendar.select(date)
             setButtonText()
             mainPicker.mainView.removeFromSuperview()
+            dataManager.getDiary(date: date) { result in
+                self.adapter?.updateData(data: result)
+            }
         }
     }
     
@@ -67,7 +74,7 @@ class ArchiveMainViewController: BaseViewController {
     }
     
     @objc func writeTouchDown() {
-        let vc = ArchiveWriteViewController()
+        let vc = ArchiveWriteViewController(date: date)
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -79,6 +86,13 @@ extension ArchiveMainViewController: FSCalendarDataSource {
     
     func maximumDate(for calendar: FSCalendar) -> Date {
         return date.endOfMonth
+    }
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        self.date = date
+        dataManager.getDiary(date: date) { result in
+            self.adapter?.updateData(data: result)
+        }
     }
 }
 

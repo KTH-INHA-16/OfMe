@@ -2,7 +2,9 @@ import UIKit
 import Kingfisher
 
 class HomeMainViewController: BaseViewController {
+    private var stopImage: String = ""
     private let dataManager = HomeMainDataManager()
+    private var tapImages: [String] = []
     private var data: [CharacterResult] = []
     private var actionData: [CharacterAction] = []
     private var startTime: Date = Date()
@@ -15,6 +17,7 @@ class HomeMainViewController: BaseViewController {
     private var isPlay: Bool = true
     private var isFirst: Bool = false
     private var isFirstTime: Bool = false
+    private var isTap: Bool = false
     private var preview: PreviewAdapter?
     private var idx: Int = 5
     private lazy var bubbleImage: UIImageView = {
@@ -62,17 +65,21 @@ class HomeMainViewController: BaseViewController {
             self.middleButton = self.tabBarController?.testMiddleButton()
         }
         self.middleButton?.addTarget(self, action: #selector(self.middleTouchDown(_:)), for: .touchDown)
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
         middleButton?.removeFromSuperview()
+        self.view.removeFromSuperview()
         dataManager.patchCharacterTime(time: time)
     }
     
     func setTimer(startTime: Date) {
+        self.timer.invalidate()
         DispatchQueue.main.async { [weak self] in
             self?.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] timer in
+                UserDefaults.standard.setValue(self!.time, forKey: "time")
                 let startSec = Int(Date().timeIntervalSince(startTime)) + self!.time * 60
                 var diffMin = startSec / 60
                 let diffHour = diffMin / 60
@@ -113,25 +120,32 @@ class HomeMainViewController: BaseViewController {
     }
     
     func changeIsFirst() {
+        self.timer.invalidate()
         [self.bubbleImage, self.label].forEach { $0?.removeFromSuperview() }
         [customView.changeButton,customView.charactorImageView,customView.infoButton,customView.menu].forEach {
             $0.removeFromSuperview()
         }
-        
+        startTime = Date()
         dataManager.getCharacter { result in
+            print(result)
             self.data = result
             self.middleButton?.removeFromSuperview()
-            if !result.isEmpty {
-                self.time = result.last!.timer
+            if let data = result.last, data.name != nil {
+                self.time = result.last!.timer!
                 self.middleButton = self.tabBarController?.endMiddleButton()
                 [self.bubbleImage, self.label].forEach { $0?.removeFromSuperview() }
                 self.customView.setConstraint(view: self.view)
                 self.customView.timeButton?.addTarget(self, action: #selector(self.timerTouchDown(_:)), for: .touchDown)
                 self.customView.changeButton.addTarget(self, action: #selector(self.changeTouchDown(_:)), for: .touchDown)
-                if let url = URL(string: result.last!.conceptImg) {
+                let screen = UIScreen.main.bounds.width
+                if let url = URL(string: result.last!.url!) {
                     self.customView.charactorImageView.kf.setImage(with: url)
+                    self.customView.charactorImageView.snp.makeConstraints { make in
+                        make.width.equalTo(152*screen/375)
+                        make.height.equalTo(325*screen/375)
+                    }
                 }
-                self.customView.titleLabel?.text = "\(result.last!.nickname)과 \(result.last!.name)과 함께한지"
+                self.customView.titleLabel?.text = "\(result.last!.nickname)과 \(result.last!.name!)과 함께한지"
                 self.setTimer(startTime: self.startTime)
                 self.isFirst = true
                 self.middleButton?.addTarget(self, action: #selector(self.middleTouchDown(_:)), for: .touchDown)
@@ -150,55 +164,122 @@ class HomeMainViewController: BaseViewController {
     func setCharactor(idx: Int) {
         customView.changeButton.setImage(UIImage(named: ImgName.imgName(of: .moon)), for: .normal)
         backgroundImageView.image = UIImage(named: ImgName.imgName(of: .background))
+        customView.charactorImageView.image = nil
+        customView.charactorImageView.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapGesture))
+        self.customView.charactorImageView.addGestureRecognizer(tapGesture)
+        let screen = UIScreen.main.bounds.width
         if !actionData.isEmpty {
+            customView.charactorImageView.image = nil
             switch idx {
             case 0:
-                setAnimation(img1: actionData[0].ActionImg, img2: actionData[1].ActionImg)
+                customView.charactorImageView.isHidden = true
+                self.customView.charactorImageView.snp.remakeConstraints { make in
+                    make.bottom.equalToSuperview().inset(80)
+                    make.centerX.equalToSuperview()
+                    make.width.equalTo(152*screen/375)
+                    make.height.equalTo(325*screen/375)
+                }
+                customView.charactorImageView.isHidden = false
+                let images = actionData.filter { return $0.situation.contains("water") }
+                tapImages = [images[0].url, images[1].url]
+                customView.charactorImageView.kf.setImage(with: URL(string: images[0].url))
             case 1:
-                setAnimation(img1: actionData[2].ActionImg, img2: actionData[3].ActionImg)
+                customView.charactorImageView.isHidden = true
+                self.customView.charactorImageView.snp.remakeConstraints { make in
+                    make.bottom.equalToSuperview().inset(80)
+                    make.centerX.equalToSuperview()
+                    make.width.equalTo(325*screen/375)
+                    make.height.equalTo(152*screen/375)
+                }
+                customView.charactorImageView.isHidden = false
+                let images = actionData.filter { return $0.situation.contains("sleep") }
+                tapImages = [images[0].url, images[1].url]
+                customView.charactorImageView.kf.setImage(with: URL(string: images[0].url))
             case 2:
-                setAnimation(img1: actionData[4].ActionImg, img2: actionData[5].ActionImg)
-            case 3:
+                customView.charactorImageView.isHidden = true
+                self.customView.charactorImageView.snp.remakeConstraints { make in
+                    make.bottom.equalToSuperview().inset(80)
+                    make.centerX.equalToSuperview()
+                    make.width.equalTo(152*screen/375)
+                    make.height.equalTo(325*screen/375)
+                }
+                customView.charactorImageView.isHidden = false
                 customView.changeButton.setImage(UIImage(named: ImgName.imgName(of: .sunButton)), for: .normal)
                 backgroundImageView.image = UIImage(named: ImgName.imgName(of: .backgroundSun))
-                setAnimation(img1: actionData[6].ActionImg, img2: actionData[7].ActionImg)
+                let images = actionData.filter { return $0.situation.contains("sun") }
+                tapImages = [images[0].url, images[1].url]
+                customView.charactorImageView.kf.setImage(with: URL(string: images[0].url))
+            case 3:
+                customView.charactorImageView.isHidden = true
+                self.customView.charactorImageView.snp.remakeConstraints { make in
+                    make.bottom.equalToSuperview().inset(80)
+                    make.centerX.equalToSuperview()
+                    make.width.equalTo(277*screen/375)
+                    make.height.equalTo(375*screen/375)
+                }
+                customView.charactorImageView.isHidden = false
+                let images = actionData.filter { return $0.situation.contains("tv") }
+                tapImages = [images[0].url, images[1].url]
+                customView.charactorImageView.kf.setImage(with: URL(string: images[0].url))
             case 4:
-                setAnimation(img1: actionData[8].ActionImg, img2: actionData[9].ActionImg)
+                customView.charactorImageView.isHidden = true
+                self.customView.charactorImageView.snp.remakeConstraints { make in
+                    make.bottom.equalToSuperview().inset(80)
+                    make.centerX.equalToSuperview()
+                    make.width.equalTo(305*screen/375)
+                    make.height.equalTo(328*screen/375)
+                }
+                customView.charactorImageView.isHidden = false
+                let images = actionData.filter { return $0.situation.contains("reverse") }
+                tapImages = [images[0].url, images[1].url]
+                customView.charactorImageView.kf.setImage(with: URL(string: images[0].url))
             default:
-                setAnimation(img1: actionData[10].ActionImg, img2: actionData[11].ActionImg)
+                customView.charactorImageView.isHidden = true
+                self.customView.charactorImageView.snp.remakeConstraints { make in
+                    make.bottom.equalToSuperview().inset(80)
+                    make.centerX.equalToSuperview()
+                    make.width.equalTo(152*screen/375)
+                    make.height.equalTo(325*screen/375)
+                }
+                customView.charactorImageView.isHidden = false
+                let images = actionData.filter { return $0.situation.contains("default") }
+                tapImages = [images[0].url, images[1].url]
+                customView.charactorImageView.kf.setImage(with: URL(string: images[0].url))
             }
         }
     }
     
-    func setAnimation(img1: String, img2: String) {
-        var time:Int = 0
-        var animationTimer = Timer()
-        animationTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-            if time == 0 {
-                if let url = URL(string: img1) {
-                    self.customView.charactorImageView.kf.setImage(with: url)
-                }
-            } else {
-                if let url = URL(string: img2) {
-                    self.customView.charactorImageView.kf.setImage(with: url)
-                }
-                animationTimer.invalidate()
-            }
-            time += 1
+    @objc func tapGesture() {
+        if isTap {
+            customView.charactorImageView.kf.setImage(with: URL(string: tapImages[1]))
+        } else {
+            customView.charactorImageView.kf.setImage(with: URL(string: tapImages[0]))
         }
+        isTap = !isTap
     }
     
     @objc func timerTouchDown(_ sender: UIButton) {
         if isPlay {
+            customView.changeButton.isUserInteractionEnabled = false
+            customView.charactorImageView.isUserInteractionEnabled = false
             timer.invalidate()
             time = Int(Date().timeIntervalSince(startTime)) / 60
             dataManager.patchCharacterTime(time: time)
             var cnt = 0
             customView.timeButton?.isUserInteractionEnabled = false
+            self.customView.charactorImageView.snp.remakeConstraints { make in
+                make.bottom.equalToSuperview().inset(80)
+                make.centerX.equalToSuperview()
+                make.width.equalTo(116)
+                make.height.equalTo(325)
+            }
+            let images = actionData.filter { return $0.situation.contains("stop") }
+            self.customView.charactorImageView.kf.setImage(with: URL(string: images[0].url))
             stopTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] timer in
                 if cnt == 0 {
                     self?.backgroundImageView.image = UIImage(named: ImgName.imgName(of: .backgroundStop))
-                    self?.customView.charactorImageView.image = UIImage(named: ImgName.imgName(of: .defaultStop))
+                    self?.customView.charactorImageView.kf.setImage(with: URL(string: images[0].url))
                 } else {
                     self?.backgroundImageView.image = UIImage(named: ImgName.imgName(of: .background))
                     self?.customView.charactorImageView.image = nil
@@ -210,8 +291,11 @@ class HomeMainViewController: BaseViewController {
                 cnt += 1
             }
         } else {
+            timer.invalidate()
+            customView.changeButton.isUserInteractionEnabled = true
             [bubbleImage,label].forEach { $0.removeFromSuperview() }
-            customView.charactorImageView.image = UIImage(named: ImgName.imgName(of: .defaultImg))
+            setCharactor(idx: idx)
+            customView.charactorImageView.isUserInteractionEnabled = true
             startTime = Date()
             setTimer(startTime: startTime)
         }
@@ -222,7 +306,7 @@ class HomeMainViewController: BaseViewController {
     @objc func infoTouchDown(_ sender: UIButton) {
         var idx: Int
         if let data = data.last {
-            idx = data.id
+            idx = data.id!
             let vc = HomeInfoViewController(idx: idx)
             self.navigationController?.pushViewController(vc, animated: true)
         }
@@ -243,6 +327,7 @@ class HomeMainViewController: BaseViewController {
     @objc func finishTouchDown() {
         if let data = data.last {
             finishView.mainView.removeFromSuperview()
+            let time = (Int(Date().timeIntervalSince(startTime)) + self.time * 60) / 60
             let vc = HomeFinishViewController(data: data, time: time)
             self.navigationController?.pushViewController(vc, animated: true)
         }

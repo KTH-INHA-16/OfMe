@@ -16,21 +16,21 @@ class TestConceptResultViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        dataManager.registerConcept()
-        dataManager.getConceptResult { result in
+        dataManager.getConcept() { result in
             if result.count != 0 {
                 self.setUP(result: result[0])
                 self.adapter = ConceptResultAdapter(of: self.collectionView, sub: self.charactorPageControl, data: result[0])
+            } else {
+                self.presentAlert(title: "다시 시도해 주시기 바랍니다.")
             }
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationItem.title = "컨셉 추천 받기"
+        self.navigationItem.title = "컨셉 추천 결과"
         circularProgressBar = self.tabBarController?.circularProgressBar(duration: 0.6, progress: 1)
         self.view.addSubview(circularProgressBar!)
-        
+        self.navigationItem.setHidesBackButton(true, animated: false)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -38,18 +38,22 @@ class TestConceptResultViewController: BaseViewController {
     }
     
     @IBAction func startTouchDown(_ sender: Any) {
-        self.navigationController?.viewControllers.forEach {
-            if $0 is HomeMainViewController {
-                if let vc = $0 as? HomeMainViewController {
-                    vc.changeIsFirst()
-                    self.navigationController?.popToViewController(vc, animated: true)
+        dataManager.registerConcept() {
+            if $0 == 1000 {
+                self.navigationController?.viewControllers.forEach {
+                    if $0 is HomeMainViewController {
+                        if let vc = $0 as? HomeMainViewController {
+                            vc.changeIsFirst()
+                            self.navigationController?.popToViewController(vc, animated: true)
+                        }
+                    }
                 }
             }
         }
     }
     
     func setUP(result: ConceptResult) {
-        if let url = URL(string: result.conceptImg) {
+        if let url = URL(string: result.url) {
             charactorImageView.kf.setImage(with: url)
         }
         
@@ -68,7 +72,7 @@ class TestConceptResultViewController: BaseViewController {
                                     range: (result.subName as NSString).range(of: result.subName))
         titleLabel.attributedText = attirbutedText
         
-        descriptLabel.font = .Notos(.bold, size: 12)
+        descriptLabel.font = .Notos(.regular, size: 12)
         descriptLabel.textColor = .gray2
         descriptLabel.text = result.description
         

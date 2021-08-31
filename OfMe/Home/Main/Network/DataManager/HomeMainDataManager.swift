@@ -48,6 +48,7 @@ class HomeMainDataManager {
         if let url = URL(string: URLString.characterTime), let jwt = UserDefaults.standard.object(forKey: "jwt") as? String {
             let header: HTTPHeaders = ["x-access-token" : jwt]
             let body: Parameters = ["timer":time]
+            UserDefaults.standard.removeObject(forKey: "time")
             AF.request(url, method: .patch, parameters: body, encoding: JSONEncoding.default, headers: header)
                 .validate()
                 .responseDecodable(of: CharacterTimeResponse.self) { response in

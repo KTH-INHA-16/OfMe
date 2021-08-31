@@ -54,6 +54,13 @@ struct ImgName {
         case cancelRound = "cancel_round"
         case starFill = "star_fill"
         case starNonFill = "star_non_fill"
+        case lock = "lock"
+        case unlock = "unlock"
+        case defaultProfile = "profile"
+        case mask = "mask"
+        case starFillSmall = "star_fill_small"
+        case starSmall = "star_small"
+        case sendBackground = "send_background"
     }
     
     static func imgName(of imgType: imgNameType) -> String {

@@ -39,7 +39,7 @@ class TestDetailViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationItem.title = "나를 먼저 알기"
+        self.navigationItem.title = "나의 성향 알기"
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -138,15 +138,15 @@ class TestDetailViewController: BaseViewController {
     }
     
     func setSelected(button: UIButton, text: String) {
-        button.backgroundColor = .mainBlue
-        button.borderColor = .mainBlue
+        button.backgroundColor = #colorLiteral(red: 0.18759498, green: 0.3460971713, blue: 0.878590703, alpha: 1)
+        button.borderColor = #colorLiteral(red: 0.18759498, green: 0.3460971713, blue: 0.878590703, alpha: 1)
         button.setCustomTitle(text: text, font: .Notos(.bold, size: 14), color: .white)
         button.isUserInteractionEnabled = false
     }
     
     func setUnselected(button: UIButton, text: String) {
         button.backgroundColor = .white
-        button.borderColor = .lightGray
+        button.borderColor = #colorLiteral(red: 0.9293304086, green: 0.929463923, blue: 0.9293012023, alpha: 1)
         button.setCustomTitle(text: text, font: .Notos(.regular, size: 14), color: .gray2)
         button.isUserInteractionEnabled = true
     }

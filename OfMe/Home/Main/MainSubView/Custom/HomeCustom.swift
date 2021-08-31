@@ -80,7 +80,7 @@ class HomeCustom: NSObject {
         view.addSubview(infoButton)
         infoButton.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(60)
-            make.right.equalToSuperview().inset(50)
+            make.right.equalToSuperview().inset(30)
         }
         
         view.addSubview(menu)
@@ -95,6 +95,8 @@ class HomeCustom: NSObject {
             make.bottom.equalToSuperview().inset(80)
             make.centerX.equalToSuperview()
         }
+        
+        setButton(timeButton!, isPlay: true)
         
     }
     

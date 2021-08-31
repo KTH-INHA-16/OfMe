@@ -4,7 +4,7 @@ class HomeFinishViewController: BaseViewController {
     private var dataManager = FinishDataManager()
     private var idx: Int = -1
     private var time: Int = 0
-    private var data: CharacterResult = CharacterResult(nickname: "", name: "", id: 0, conceptImg: "", timer: 0)
+    private var data: CharacterResult = CharacterResult(nickname: "", name: "", id: 0, url: "", timer: 0)
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var timeLabel: UILabel!
@@ -12,7 +12,6 @@ class HomeFinishViewController: BaseViewController {
     @IBOutlet weak var descriptLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var backButton: UIButton!
     
     init(data: CharacterResult, time: Int) {
         super.init(nibName: "HomeFinishViewController", bundle: Bundle.main)
@@ -29,32 +28,37 @@ class HomeFinishViewController: BaseViewController {
         let hour = time / 60
         time = time % 60
         let timeText = "\(hour > 0 ? "\(hour)시간 \(time)분" : "\(time)분")"
-        timeLabel.makeHightledText(all: "\(data.name)과 함께한 시간    \(timeText)", for: "\(timeText)")
+        timeLabel.makeHightledText(all: "\(data.name!)과 함께한 시간    \(timeText)", for: "\(timeText)")
         pointLabel.makeHightledText(all: "예상포인트 5p", for: "5p", font: .Notos(.regular, size: 11))
         
         descriptLabel.font = .Notos(.regular, size: 12)
         descriptLabel.text = "헤헤.. \(data.nickname)!\n나와 함께해줘서고마워\n다음에 또 보자 :)"
         nextButton.isUserInteractionEnabled = false
-        backButton.isUserInteractionEnabled = false
         
-        if let url = URL(string: data.conceptImg) {
+        if let url = URL(string: data.url!) {
             imageView.kf.setImage(with: url)
         }
-        
+        print(data)
         collectionView.register(UINib(nibName: StarCell.identifier, bundle: nil), forCellWithReuseIdentifier: StarCell.identifier)
         collectionView.dataSource = self
         collectionView.delegate = self
     }
     
     @IBAction func laterTouchDown(_ sender: Any) {
-        dataManager.patchRate(idx: idx+1, id: data.id)
-        dataManager.patchFinish(time: time)
-        self.navigationController?.viewControllers.forEach {
-            if $0 is HomeMainViewController {
-                if let vc = $0 as? HomeMainViewController {
-                    print("change")
-                    vc.changeIsFirst()
-                    self.navigationController?.popToViewController(vc, animated: true)
+        dataManager.patchFinish(time: time) {
+            self.dataManager.patchRate(idx: self.idx+1, id: $0) {
+                if $0 == 1000 {
+                    self.navigationController?.viewControllers.forEach {
+                        if $0 is HomeMainViewController {
+                            if let vc = $0 as? HomeMainViewController {
+                                print("change")
+                                vc.changeIsFirst()
+                                self.navigationController?.popToViewController(vc, animated: true)
+                            }
+                        }
+                    }
+                } else {
+                    self.presentAlert(title: "다시 시도해 주시기 바랍니다.")
                 }
             }
         }
@@ -89,7 +93,6 @@ extension HomeFinishViewController: UICollectionViewDelegate, UICollectionViewDe
         idx = indexPath.row
         if idx != -1 {
             nextButton.isUserInteractionEnabled = true
-            backButton.isUserInteractionEnabled = true
         }
         collectionView.reloadData()
     }

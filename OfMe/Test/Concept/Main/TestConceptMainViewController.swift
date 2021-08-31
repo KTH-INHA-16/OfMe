@@ -30,7 +30,7 @@ class TestConceptMainViewController: BaseViewController {
         ], range: (titleText as NSString).range(of: titleText))
         attributedText.addAttributes([
             .font : UIFont.Notos(.bold, size: 22),
-            .foregroundColor : UIColor.mainBlue
+            .foregroundColor : UIColor(hex: 0x1038BC)
         ], range: (titleText as NSString).range(of: "오늘의 친구야"))
         titleLabel.attributedText = attributedText
     }

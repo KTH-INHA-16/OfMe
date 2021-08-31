@@ -22,7 +22,7 @@ class ConceptResultTextCell: UICollectionViewCell {
     }
     
     func update(idx: Int, result: ConceptResult) {
-        titleLabel.makeHightledText(all: data.titles[idx],
+        titleLabel.makeHightledText(all: "\(result.name)\(data.titles[idx])",
                                     for: data.titleHightLightText[idx],
                                     font: .Notos(.regular, size: 18))
         switch idx {

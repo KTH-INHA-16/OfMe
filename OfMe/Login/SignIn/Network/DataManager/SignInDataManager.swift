@@ -60,13 +60,13 @@ class SignInDataManager: SignInProtocol {
             param.checkPassword.rawValue : info.password2,
             param.nickname.rawValue : info.nickName
         ]
-        print(paramter)
         if let url = URL(string: URLString.signIn) {
             AF.request(url, method: .post, parameters: paramter, encoding: JSONEncoding.default, headers: nil)
                 .validate()
                 .responseDecodable(of: SignInResponse.self) { response in
                     switch response.result {
                     case .success(let result):
+                        print(result)
                         completion(result)
                     case .failure(let error):
                         print("SignIn Error:\(error.errorDescription ?? "error")")

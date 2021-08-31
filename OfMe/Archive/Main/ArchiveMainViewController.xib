@@ -23,7 +23,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KNt-se-ILr" customClass="FSCalendar">
-                    <rect key="frame" x="0.0" y="50" width="414" height="200"/>
+                    <rect key="frame" x="0.0" y="80" width="414" height="200"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="200" id="Ehb-KC-ndh"/>
@@ -82,7 +82,7 @@
                     </connections>
                 </button>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="6Z2-Cw-Nnh">
-                    <rect key="frame" x="0.0" y="100" width="414" height="674"/>
+                    <rect key="frame" x="0.0" y="130" width="414" height="644"/>
                     <color key="backgroundColor" red="0.95686918499999996" green="0.95685130360000004" blue="0.95686346290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="30" minimumInteritemSpacing="0.0" id="LwA-lE-u29">
                         <size key="itemSize" width="128" height="128"/>
@@ -99,10 +99,10 @@
                 <constraint firstItem="6Z2-Cw-Nnh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="AMu-3h-Z2x"/>
                 <constraint firstItem="vaX-Nv-Ho4" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="15" id="SrK-qt-mV3"/>
                 <constraint firstItem="KNt-se-ILr" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="YL9-AT-fnY"/>
-                <constraint firstItem="KNt-se-ILr" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="50" id="ffW-ac-ekn"/>
+                <constraint firstItem="KNt-se-ILr" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="80" id="ffW-ac-ekn"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6Z2-Cw-Nnh" secondAttribute="trailing" id="khd-7h-KRT"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="KNt-se-ILr" secondAttribute="trailing" id="nQe-oi-EHX"/>
-                <constraint firstItem="6Z2-Cw-Nnh" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="100" id="oCf-nb-47Y"/>
+                <constraint firstItem="6Z2-Cw-Nnh" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="130" id="oCf-nb-47Y"/>
                 <constraint firstItem="vaX-Nv-Ho4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="pdL-H0-HUh"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>

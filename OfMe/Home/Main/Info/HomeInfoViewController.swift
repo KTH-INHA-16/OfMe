@@ -28,6 +28,9 @@ class HomeInfoViewController: BaseViewController {
             print(result)
             if !result.isEmpty {
                 self.adapter = ConceptResultAdapter(of: self.collectionView, sub: self.pageControl, data: result[0])
+                if let url = URL(string: result[0].url) {
+                    self.mainImageView.kf.setImage(with: url)
+                }
                 self.titleLabel.text = result[0].name
                 self.mainLabel.text = result[0].subName
                 self.subLabel.text = result[0].description

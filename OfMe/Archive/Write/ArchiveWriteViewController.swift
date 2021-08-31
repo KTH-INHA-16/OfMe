@@ -2,19 +2,14 @@ import UIKit
 import ImagePicker
 
 class ArchiveWriteViewController: BaseViewController {
+    private var writeDataManager = WriteDataManager()
+    private var concept: [WriteConcept] = []
+    private var data: [DiaryGet] = []
+    private var dataManager = DiaryDataManager()
     private var info: WriteInfo = WriteInfo()
+    private var isEdit: Bool = false
     private let pickerView: ArchiveWritePicker = ArchiveWritePicker()
     private var date: Date = Date()
-    private var images: [UIImage] = [] {
-        didSet {
-            collectionView.reloadData()
-            if images.count == 0 {
-                setImageButton()
-            } else {
-                addImageButton.removeFromSuperview()
-            }
-        }
-    }
     
     lazy var rightButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
@@ -30,25 +25,35 @@ class ArchiveWriteViewController: BaseViewController {
         return button
     }()
     
-    private lazy var addImageButton: UIButton = {
-        let button = UIButton()
-        button.imageEdgeInsets.left = -20
-        button.setImage(UIImage(named: ImgName.imgName(of: .image)), for: .normal)
-        button.setAttributedTitle(NSAttributedString(string: "이미지 첨부",
-                                                     attributes: [
-                                                        .font : UIFont.Notos(.regular, size: 14),
-                                                        .foregroundColor : UIColor.mainBlue
-                                                     ]), for: .normal)
-        button.addTarget(self, action: #selector(addImageTouchDown), for: .touchDown)
-        return button
-    }()
-    
     @IBOutlet weak var dateButton: UIButton!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var charactorTextField: UITextField!
     @IBOutlet weak var contentTextView: UITextView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var scrollView: UIScrollView!
+    
+    init(data: DiaryGet) {
+        super.init(nibName: "ArchiveWriteViewController", bundle: Bundle.main)
+        info = WriteInfo(diaryIdx: data.id, idx: data.conceptId, title: data.title, content: data.content, images: [])
+        self.data.append(data)
+        isEdit = true
+    }
+    
+    init() {
+        super.init(nibName: "ArchiveWriteViewController", bundle: Bundle.main)
+    }
+    
+    init(date: Date) {
+        super.init(nibName: "ArchiveWriteViewController", bundle: Bundle.main)
+        self.date = date
+        writeDataManager.getConcept(date: date) { data in
+            self.concept = data
+        }
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,14 +78,41 @@ class ArchiveWriteViewController: BaseViewController {
         contentTextView.textContainer.maximumNumberOfLines = 15
         contentTextView.delegate = self
         collectionView.addDashedBorder()
-        setImageButton()
         
-        collectionView.register(UINib(nibName: WriteImageCell.identifier, bundle: nil), forCellWithReuseIdentifier: WriteImageCell.identifier)
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        
+
         charactorTextField.delegate = self
         titleTextField.delegate = self
+        
+        charactorTextField.addTarget(self, action: #selector(setChar), for: .touchDown)
+        
+        writeDataManager.getConcept(date: date) { data in
+            self.concept = data
+            self.pickerView.data = data
+            self.pickerView.picker?.reloadAllComponents()
+        }
+        
+        dataManager.getDiary(date: date) { result in
+            self.data = result
+            self.collectionView.reloadData()
+        }
+        
+        if isEdit {
+            dateButton.isHidden = true
+            dateButton.isUserInteractionEnabled = false
+            let texts = data.first!.createAt.components(separatedBy: "-")
+            date = Date(year: Int(texts[0])!, month: Int(texts[1])!, day: Int(texts[2])!)
+            titleTextField.text = data.first!.title
+            contentTextView.text = data.first!.content
+            contentTextView.textColor = .label
+            if data.count > 0 {
+                if let d = data.first {
+                    if d.conceptId > 0 {
+                        charactorTextField.text = DummyData.character[d.conceptId]
+                    }
+                }
+            }
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,6 +122,10 @@ class ArchiveWriteViewController: BaseViewController {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillHide(_:)),
                                                name: UIResponder.keyboardWillHideNotification, object: nil)
+        if concept.last != nil {
+            info.idx = concept.last!.conceptId
+            charactorTextField.text = concept.last!.name
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -104,13 +140,6 @@ class ArchiveWriteViewController: BaseViewController {
     @IBAction func dateTouchDown(_ sender: Any) {
         pickerView.setConstraint(view: self.view)
         pickerView.selectButton?.addTarget(self, action: #selector(selectTouchDown), for: .touchDown)
-    }
-    
-    func setImageButton() {
-        self.view.addSubview(addImageButton)
-        addImageButton.snp.makeConstraints { make in
-            make.centerX.centerY.equalTo(collectionView)
-        }
     }
     
     func setUnderLine(of textField: UITextField) {
@@ -128,27 +157,40 @@ class ArchiveWriteViewController: BaseViewController {
     }
     
     func checkButton() {
-        if info.content != "" && info.idx != -1 && info.title != "" {
+        if info.content.isExists && info.title.isExists {
             rightButton.isEnabled = true
         } else {
             rightButton.isEnabled = false
         }
     }
     
-    @objc func addImageTouchDown() {
-        let configuration = Configuration()
-        configuration.doneButtonTitle = "완료"
-        configuration.cancelButtonTitle = "취소"
-        configuration.OKButtonTitle = "확인"
-        configuration.recordLocation = false
-        configuration.canRotateCamera = false
-        let imagePickerController = ImagePickerController(configuration: configuration)
-        imagePickerController.delegate = self
-        imagePickerController.imageLimit = 4
-        present(imagePickerController, animated: true, completion: nil)
+    @objc func setChar() {
+        
     }
     
     @objc func writeTouchDown() {
+        if !isEdit {
+            writeDataManager.sendWrite(info: info, date: date) { code in
+                if code == 1000 {
+                    self.pickerView.setSendConstraint(view: self.view)
+                    self.pickerView.end?.addTarget(self, action: #selector(self.end), for: .touchDown)
+                    self.pickerView.sendButton?.addTarget(self, action: #selector(self.back), for: .touchDown)
+                } else {
+                    self.presentAlert(title: "다시 시도해주시기 바랍니다.")
+                }
+            }
+        } else {
+            writeDataManager.patchWrite(info: info, date: date) { code in
+                if code == 1000 {
+                    self.navigationController?.popViewController(animated: true)
+                } else {
+                    self.presentAlert(title: "다시 시도해주시기 바랍니다.")
+                }
+            }
+        }
+    }
+    
+    @objc func back() {
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -156,6 +198,17 @@ class ArchiveWriteViewController: BaseViewController {
         date = pickerView.pickerView!.date
         pickerView.mainView.removeFromSuperview()
         setButtonText()
+        writeDataManager.getConcept(date: date) { data in
+            print(data)
+            self.concept = data
+            self.pickerView.data = data
+            self.pickerView.picker?.reloadAllComponents()
+        }
+        
+        if concept.last != nil {
+            info.idx = concept.last!.conceptId
+            charactorTextField.text = concept.last!.name
+        }
     }
     
     @objc func keyboardWillHide(_ sender: Notification) {
@@ -164,10 +217,6 @@ class ArchiveWriteViewController: BaseViewController {
     
     @objc func singleTapGestureCaptured(gesture: UITapGestureRecognizer){
         self.view.endEditing(true)
-    }
-    
-    @objc func removeTouchDown(_ sender: UIButton) {
-        images.remove(at: sender.tag)
     }
     
     @objc func charactorTouchDown() {
@@ -181,28 +230,17 @@ class ArchiveWriteViewController: BaseViewController {
         pickerView.subView.removeFromSuperview()
         checkButton()
     }
-}
-
-extension ArchiveWriteViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count
+    
+    @objc func selectDown() {
+        if pickerView.data.count > 0 {
+            info.idx = pickerView.data[pickerView.picker!.selectedRow(inComponent: 0)].conceptId
+        }
+        pickerView.selectView.removeFromSuperview()
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WriteImageCell.identifier, for: indexPath) as? WriteImageCell
-        else { return UICollectionViewCell() }
-        cell.cancelButton.tag = indexPath.row
-        cell.cancelButton.addTarget(self, action: #selector(removeTouchDown(_:)), for: .touchDown)
-        cell.updateUI(image: images[indexPath.row])
-        return cell
-    }
-    
-    
-}
-
-extension ArchiveWriteViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 75, height: collectionView.frame.height)
+    @objc func end() {
+        self.navigationController?.popViewController(animated: true)
+        self.tabBarController?.selectedIndex = 3
     }
 }
 
@@ -234,30 +272,17 @@ extension ArchiveWriteViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
         let numberOfChars = newText.count
-        return numberOfChars < 350
-    }
-}
-
-extension ArchiveWriteViewController: ImagePickerDelegate {
-    func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+        return numberOfChars < 280
         
-    }
-    
-    func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
-        self.images = images
-        imagePicker.dismiss(animated: true, completion: nil)
-    }
-    
-    func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
-        imagePicker.dismiss(animated: true, completion: nil)
     }
 }
  
 extension ArchiveWriteViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField.tag == 1 {
-            pickerView.setSubConstraint(view: self.view)
-            pickerView.selectCharactorButton?.addTarget(self, action: #selector(setCharactor), for: .touchDown)
+            pickerView.setPicker(view: self.view)
+            pickerView.select?.addTarget(self, action: #selector(selectDown), for: .touchDown)
+            self.view.endEditing(true)
         }
     }
     

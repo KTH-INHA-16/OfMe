@@ -30,11 +30,12 @@ extension UITabBarController {
     func circularProgressBar(duration: TimeInterval, progress: CGFloat) -> CircularProgressBar {
         let progressBar = CircularProgressBar(
             frame: CGRect(x: (view.center.x + 25),
-                          y: tabBar.frame.origin.y+tabBar.frame.height/2,
+                          y: tabBar.frame.origin.y+tabBar.frame.height-25,
                           width: 50,
                           height: 50), progress: progress)
+        progressBar.backgroundColor = .white
         progressBar.progressAnimation(duration: duration)
-        progressBar.center = CGPoint(x: view.center.x + 25, y: tabBar.frame.origin.y+tabBar.frame.height/2)
+        progressBar.center = CGPoint(x: view.center.x + 25, y: tabBar.frame.origin.y+tabBar.frame.height/2-12.5)
         self.tabBar.addSubview(progressBar)
         self.view.layoutIfNeeded()
         return progressBar

@@ -35,6 +35,7 @@ class TestConceptSecondViewController: BaseViewController {
                     self.menu?.nextButton.removeFromSuperview()
                     self.secondIdx = -1
                 default:
+                    UserDefaults.standard.setValue(idx, forKey: "stageTwoResult")
                     self.menu?.setButton(view: self.view)
                     self.secondIdx = idx - 1
                 }

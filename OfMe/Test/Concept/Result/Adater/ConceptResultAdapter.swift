@@ -1,7 +1,7 @@
 import UIKit
 
 class ConceptResultAdapter: NSObject {
-    private var data: ConceptResult = ConceptResult(id: 0, name: "", conceptImg: "", subName: "", description: "", advantage: "", habit: "", behavior: "", value: "", music: "")
+    private var data: ConceptResult = ConceptResult(id: 0, name: "", url: "", subName: "", description: "", advantage: "", habit: "", behavior: "", value: "", music: "")
     private weak var collectionView: UICollectionView!
     private weak var pageControl: UIPageControl!
     

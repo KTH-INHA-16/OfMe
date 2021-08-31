@@ -22,7 +22,6 @@ class PreviewAdapter: NSObject {
         view.backgroundColor = .systemBackground
         view.frame = CGRect(x: 0, y: UIScreen.main.bounds.height-490, width: UIScreen.main.bounds.width, height: 490)
         view.cornerRadius = 35
-        
         let cancelButton = UIButton()
         cancelButton.tag = 0
         cancelButton.setImage(UIImage(named: ImgName.imgName(of: .cancel)), for: .normal)
@@ -80,7 +79,7 @@ class PreviewAdapter: NSObject {
             make.centerX.equalToSuperview()
         }
         
-        let testButton = makeButton(text: "나를 먼저 알기", tag: 1)
+        let testButton = makeButton(text: "나의 성향 알기", tag: 1)
         view.addSubview(testButton)
         testButton.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(218)

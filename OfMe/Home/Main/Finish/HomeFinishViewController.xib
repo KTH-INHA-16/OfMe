@@ -11,7 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeFinishViewController" customModule="OfMe" customModuleProvider="target">
             <connections>
-                <outlet property="backButton" destination="V1c-v5-oSt" id="L7y-fW-mjT"/>
                 <outlet property="collectionView" destination="YMf-tt-hQx" id="suc-22-a5b"/>
                 <outlet property="descriptLabel" destination="L4O-cq-axy" id="Yl3-Bz-4nO"/>
                 <outlet property="imageView" destination="Z5A-ac-D1p" id="hNe-XX-RaG"/>
@@ -115,10 +114,11 @@
                     </constraints>
                     <state key="normal">
                         <attributedString key="attributedTitle">
-                            <fragment content="컨셉 기록하기">
+                            <fragment content="컨셉 종료하기">
                                 <attributes>
                                     <color key="NSColor" red="0.091667748990000006" green="0.19188937540000001" blue="0.73729795220000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <font key="NSFont" size="16" name="NotoSansKR-Bold"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                 </attributes>
                             </fragment>
                         </attributedString>
@@ -134,22 +134,8 @@
                             <color key="value" red="0.71940559150000005" green="0.76123851539999998" blue="0.92158919569999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V1c-v5-oSt">
-                    <rect key="frame" x="161" y="507" width="92" height="29.5"/>
-                    <state key="normal">
-                        <attributedString key="attributedTitle">
-                            <fragment content="나중에 기록할게요">
-                                <attributes>
-                                    <color key="NSColor" red="0.50980752709999999" green="0.50979751350000002" blue="0.50980430840000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    <font key="NSFont" size="12" name="NotoSansKR-Regular"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                </attributes>
-                            </fragment>
-                        </attributedString>
-                    </state>
                     <connections>
-                        <action selector="laterTouchDown:" destination="-1" eventType="touchUpInside" id="LlA-mr-xjk"/>
+                        <action selector="laterTouchDown:" destination="-1" eventType="touchUpInside" id="Xhe-g7-pLD"/>
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L4O-cq-axy">
@@ -172,7 +158,6 @@
                 <constraint firstItem="Z5A-ac-D1p" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="50" id="El1-xR-pcx"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="X4k-Yx-xfF" secondAttribute="trailing" constant="30" id="En2-ZX-ooc"/>
                 <constraint firstItem="M6g-dZ-rM6" firstAttribute="centerY" secondItem="Z5A-ac-D1p" secondAttribute="centerY" id="Fl7-H5-LBV"/>
-                <constraint firstItem="V1c-v5-oSt" firstAttribute="top" secondItem="1tn-oW-15k" secondAttribute="bottom" constant="10" id="Ham-bM-bpZ"/>
                 <constraint firstItem="1tn-oW-15k" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="LG5-bi-Hcp"/>
                 <constraint firstItem="nOC-4q-tOR" firstAttribute="top" secondItem="4Ku-L8-l6z" secondAttribute="bottom" constant="7.5" id="PYz-dN-bBl"/>
                 <constraint firstItem="YMf-tt-hQx" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="50" id="Q2Y-Am-38N"/>
@@ -181,7 +166,6 @@
                 <constraint firstItem="X4k-Yx-xfF" firstAttribute="top" secondItem="Z5A-ac-D1p" secondAttribute="bottom" constant="8" symbolic="YES" id="X44-tP-vfx"/>
                 <constraint firstItem="X4k-Yx-xfF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="Xev-mM-Ywy"/>
                 <constraint firstItem="1tn-oW-15k" firstAttribute="top" secondItem="nOC-4q-tOR" secondAttribute="bottom" constant="20" id="ZfC-Ns-H05"/>
-                <constraint firstItem="V1c-v5-oSt" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="aPM-zK-31c"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="4Ku-L8-l6z" secondAttribute="trailing" constant="30" id="cXM-pA-fjt"/>
                 <constraint firstItem="2O3-dP-Cl3" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="15" id="euM-oH-w7x"/>
                 <constraint firstItem="nOC-4q-tOR" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="fdD-Zt-RHm"/>

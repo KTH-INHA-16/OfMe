@@ -39,6 +39,7 @@ class TestConceptDetailFirstViewController: BaseViewController {
     }
     
     @objc func nextTouchDown(_ sender: UIButton) {
+        UserDefaults.standard.setValue(data[index].id, forKey: "stageOneResult")
         let vc = TestConceptSecondViewController(firstIdx: data[index].id)
         self.navigationController?.pushViewController(vc, animated: true)
     }

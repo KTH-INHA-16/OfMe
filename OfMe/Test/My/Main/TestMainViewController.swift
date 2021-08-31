@@ -1,8 +1,9 @@
 import UIKit
 
 class TestMainViewController: BaseViewController {
-    private var nickName: String = "메이커스짱짱"
+    private var nickName: String = ""
     private let buttonText: [String] = ["유형 직접 선택하기", "테스트 시작하기"]
+    private let dataManager = InfoNameDataManager()
 
     @IBOutlet weak var introLabel: UILabel!
     @IBOutlet weak var descriptLabel: UILabel!
@@ -13,10 +14,16 @@ class TestMainViewController: BaseViewController {
         super.viewDidLoad()
         
         setUP()
+        
+        dataManager.getName() { data in
+            self.nickName = data.nickname
+            self.setUP()
+            UserDefaults.standard.setValue(data.id, forKey: "userID")
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationItem.title = "나를 먼저 알기"
+        self.navigationItem.title = "나의 성향 알기"
         middleButton = self.tabBarController?.normalMiddleButton()
     }
     
@@ -66,7 +73,7 @@ class TestMainViewController: BaseViewController {
             for: .normal)
         button.cornerRadius = 6
         button.borderWidth = 1
-        button.borderColor = .mainBlue
+        button.borderColor = #colorLiteral(red: 0.7828452587, green: 0.8184879422, blue: 0.9398440123, alpha: 1)
     }
 
 }

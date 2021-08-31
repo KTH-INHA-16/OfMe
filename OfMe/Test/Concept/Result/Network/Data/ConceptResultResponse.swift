@@ -12,7 +12,7 @@ struct ConceptResultResponse: Codable {
 struct ConceptResult: Codable {
     var id: Int
     var name: String
-    var conceptImg: String
+    var url: String
     var subName: String
     var description: String
     var advantage: String

@@ -66,7 +66,7 @@ class LoginMainViewController: LoginBaseViewController {
         }
         
         submitButton.cornerRadius = 6
-        submitButton.setGradient(color1: .gradientLeft, color2: .gradientRight)
+        submitButton.backgroundColor = .mainBlue
         submitButton.setAttributedTitle(NSAttributedString(string: submitBtnText, attributes: [
             .font : UIFont.Notos(.bold, size: 17),
             .foregroundColor : UIColor.white

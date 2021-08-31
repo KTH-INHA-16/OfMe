@@ -40,7 +40,7 @@ class TestCategoryViewController: BaseViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationItem.title = "나를 먼저 알기"
+        self.navigationItem.title = "나의 성향 알기"
         middleButton = self.tabBarController?.normalMiddleButton()
     }
     
@@ -63,6 +63,7 @@ class TestCategoryViewController: BaseViewController {
     
     @objc func resultTouchDown(_ sender: UIButton) {
         if let idx = result?.id {
+            UserDefaults.standard.setValue(idx, forKey: "conceptID")
             let vc = TestResultViewController(idx: idx)
             self.navigationController?.pushViewController(vc, animated: true)
         }

@@ -10,6 +10,7 @@ struct CharacterActionResponse: Codable {
 }
 
 struct CharacterAction: Codable {
-    var ActionName: String
-    var ActionImg: String
+    var id: Int
+    var situation: String
+    var url: String
 }
